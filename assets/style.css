@@ -1,0 +1,1537 @@
+@font-face {
+    font-family: 'SofiaPro-Light';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Light_Az.otf');
+}
+
+@font-face {
+    font-family: 'SofiaPro-Light-Italic';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Light_Italic_Az.otf');
+}
+
+@font-face {
+    font-family: 'SofiaPro-SemiBold';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Semi_Bold_Az.otf');
+
+}
+
+@font-face {
+    font-family: 'SofiaPro-SemiBold_Italic';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Semi_Bold_Italic_Az.otf');
+
+}
+
+@font-face {
+    font-family: 'Sofia Pro med';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Medium_Az.otf');
+
+}
+
+
+@font-face {
+    font-family: 'Sofia Pro';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Regular_Az.otf');
+
+}
+
+@font-face {
+    font-family: 'Sofia Pro Italic');
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/Sofia_Pro_Regular_Italic_Az.otf');
+
+}
+
+@font-face {
+    font-family: 'fonde';
+    src: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/t/1/assets/fonde-adobe.otf');
+
+}
+
+
+    {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a,
+button {
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+html {
+    overflow: auto;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+select,
+input,
+option {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+    font-size: 15px;
+    background: #ffffff;
+    color: #2B3F45;
+    font-family: 'Sofia Pro', sans-serif;
+}
+
+h1 {
+    font-family: fonde;
+    font-style: normal;
+    font-size: 62px;
+    line-height: 85px;
+    letter-spacing: -0.03em;
+    color: #2B3F45;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+h2 {
+    font-family: 'Sofia Pro med';
+    font-style: normal;
+    font-size: 32px;
+    line-height: 54px;
+    letter-spacing: 0.01em;
+    color: #2B3F45;
+    margin-bottom: 15px;
+    margin-top: 45px;
+}
+
+h3 {
+    font-family: 'Sofia Pro med';
+    font-style: normal;
+    font-size: 22px;
+    line-height: 32px;
+    letter-spacing: 0.01em;
+    color: #2B3F45;
+    padding-top: 45px;
+    margin-bottom: 15px;
+}
+
+h6 {
+    font-family: 'Sofia Pro';
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #2B3F45;
+}
+
+.head_text_one {
+    font-family: fonde;
+    font-style: normal;
+    font-size: 69px;
+    line-height: 76px;
+    letter-spacing: -0.03em;
+    color: #2B3F45;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: 'Sofia Pro';
+    font-style: normal;
+    font-size: 17px;
+    line-height: 24px;
+    color: #2B3F45;
+}
+
+.font_14 p {
+    font-family: SofiaPro-Light;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    color: #2B3F45;
+}
+
+*+p {
+    margin-top: 15px;
+}
+
+a:focus,
+button:focus {
+    outline: none;
+}
+
+img {
+    width: 100%;
+}
+
+::-webkit-input-placeholder {
+    color: #838183;
+}
+
+::-moz-placeholder {
+    color: #838183;
+}
+
+:-ms-input-placeholder {
+    color: #838183;
+}
+
+:-moz-placeholder {
+    color: #838183;
+}
+
+.mb_none {
+    display: none;
+}
+
+.mb_show {
+    display: none;
+}
+
+.upper_case {
+    text-transform: uppercase;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.button {
+    margin-top: 50px;
+    position: relative;
+}
+
+.h6-prod-white {
+    color: #F2EDE7;
+}
+
+
+
+/*button*/
+.btn_black {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #2B3F45;
+    border: 1px solid #2B3F45;
+    box-sizing: border-box;
+    padding: 15px 22px;
+    border-radius: 0;
+}
+
+.btn_black:hover {
+    background-color: #2B3F45;
+    color: #ffffff;
+}
+
+.btn_white {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #F2EDE7;
+    border: 1px solid #F2EDE7;
+    box-sizing: border-box;
+    padding: 15px 22px;
+    border-radius: 0;
+}
+
+.btn_white:hover {
+    background-color: #F2EDE7;
+    color: #2B3F45;
+}
+
+.btn_pink {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #CFAE93;
+    border: 1px solid #F2EDE7;
+    background-color: #F2EDE7;
+    box-sizing: border-box;
+    padding: 9.2px 22px;
+    border-radius: 0;
+}
+
+.btn_pink:hover {
+    border: 1px solid #F2EDE7;
+    background-color: #CFAE93;
+    color: #F2EDE7;
+}
+
+/*header css start here */
+
+header {
+    background-color: #F2EDE7;
+}
+
+header .header_top_line {
+    padding: 12px 0;
+    text-align: center;
+    background-color: #D9BAA0;
+}
+
+header .header_top_line p {
+    margin: 0;
+    padding: 0;
+}
+
+header .flx {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header .navbar-nav li a {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 11px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #2B3F45;
+}
+
+header .navbar-nav li a .logo {
+    max-width: 175px;
+    width: 100%;
+}
+
+header .navbar-nav li a .cart {
+    max-width: 18px;
+    width: 100%;
+}
+
+header .shop_by .flx {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+header .shop_by .flx a {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2B3F45;
+    padding: 11px 0;
+    display: block;
+    width: 33.33%;
+    border: 1px solid #E8DCCC;
+}
+
+header .shop_by .flx a:hover {
+    background-color: #D3e1e3;
+    border: 1px solid #d3e1e3;
+}
+
+/*header css End here */
+
+
+/*banner css start here */
+
+.banner {
+    padding-top: 75px;
+    padding-bottom: 0;
+    background: #E8DCCC;
+    position: relative;
+}
+
+/* .banner:before{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; background-image: url(https://cdn.shopify.com/s/files/1/0584/2508/2052/files/waves.png?v=1627476972); height: 78px; width: 100%; background-repeat: no-repeat; background-size: cover; } */
+.banner_pg2:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://cdn.shopify.com/s/files/1/0584/2508/2052/files/Vector_1.svg?v=1628063362);
+    height: 78px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner_text {
+    padding-top: 30px;
+}
+
+.banner .banner_text p {
+    margin-bottom: 20px;
+}
+
+.banner_right_img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner .banner_right_img img {
+    max-width: 310px;
+}
+
+.banner .banner_right_img img:last-child {
+    margin-left: 20px;
+}
+
+/*banner css End here */
+
+/*section 2 css start here */
+.section2 {
+    background-color: #5A838F;
+    padding: 20px 0 100px;
+}
+
+.section2 .sec2_text {
+    text-align: center;
+    max-width: 502px;
+    margin: 0 auto 0px;
+}
+
+.section2 .sec2_text h3 {
+    margin-bottom: 50px;
+}
+
+.section2 .sec2_text p {
+    color: #F2EDE7;
+}
+
+.section2 .sec2_text img {
+    margin-top: 100px;
+    max-width: 50px;
+    width: 100%;
+}
+
+/*section 2 css End here */
+
+/*section 3 css start here */
+.section3 {
+    padding: 70px 0 100px;
+    background-color: #5A838F;
+    position: relative;
+}
+
+/* .section3:before {content: ""; position: absolute; left: 0; right: 0; bottom: 0; background-image: url(https://cdn.shopify.com/s/files/1/0584/2508/2052/files/waves2.png?v=1627476973); height: 50%; width: 100%; background-repeat: no-repeat; background-size: cover; } */
+.section3 .head_text {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section3 .head_text p {
+    color: #F2EDE7;
+    margin-top: 10px;
+}
+
+.section3 .sec_box a {
+    display: block;
+    text-align: center;
+}
+
+.section3 .sec_box a:hover img {
+    transform: scale(1.1);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.section3 .sec_box a .img_box img {
+    max-width: 266px;
+    width: 100%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.section3 .sec_box a h6 {
+    margin-top: 20px;
+}
+
+.section3 .sec_box a p {
+    margin-top: 10px;
+    color: #F2EDE7;
+}
+
+/*section 3 css End here */
+
+
+/*section 4 css start here */
+.section4 {
+    background-color: #F2EDE7;
+    position: relative;
+}
+
+.section4:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #E2C9B6;
+}
+
+.section4 .sec4_text {
+    text-align: center;
+}
+
+.section4 .sec4_text img {
+    max-width: 50px;
+    width: 100%;
+    margin-bottom: 55px;
+}
+
+.section4 .sec4_text h6.bold {
+    font-family: ''Sofia Pro'';
+    margin-bottom: 50px;
+}
+
+.section4 .sec4_text h6 {
+    font-family: 'Sofia Pro';
+    color: #2B3F45;
+    max-width: 386px;
+    margin: 0 auto;
+}
+
+.section4 .sec4_text h2 br {
+    display: none;
+}
+
+/*section 4 css end here */
+
+
+/*section 5 css start here */
+.section5 {
+    padding: 80px 0;
+    background-color: #D3E1E3;
+}
+
+.section5 h3 {
+    color: #2B3F45;
+    margin-bottom: 30px;
+    padding-top: 0;
+}
+
+.section5 .round_boxs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.section5 .round_boxs .round_box {
+    width: 14.72%;
+    max-width: 175px;
+    text-align: center;
+    border-right: 1px solid #2B3F45;
+}
+
+.section5 .round_boxs .round_box img {
+    max-width: 96px;
+    width: 100%;
+    border-radius: 50%;
+    max-height: 96px;
+}
+
+.section5 .round_boxs .round_box p {
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    color: #2B3F45;
+    margin-top: 19px;
+}
+
+.section5 .round_boxs .round_box:last-child {
+    border-right: none;
+    border-bottom: 0;
+}
+
+/*section 5 css end here */
+
+
+/*section 6 css start here */
+.section6 {
+    background-color: #5A838F;
+    padding: 83px 0;
+}
+
+.section6 h3 {
+    max-width: 684px;
+    margin: 0 auto;
+    padding-top: 0;
+}
+
+/*section 6 css end here */
+
+
+/*section 7 css start here */
+.section7 {
+    background-color: #F2EDE7;
+    padding: 70px 0px;
+}
+
+.section7:before {
+    display: none;
+}
+
+.section7 h3 {
+    color: #2B3F45;
+}
+
+/*section 7 css start here */
+
+
+/*section 8 css start here */
+.section8 {
+    background-color: #E8DCCC;
+    padding-bottom: 160px;
+    padding-top: 20px;
+}
+
+.section8:before {
+    background-image: url(https://cdn.shopify.com/s/files/1/0584/2508/2052/files/waves3.png?v=1627476972);
+    height: 55px;
+}
+
+.section8 h6,
+.section8 p,
+.section8 h3 {
+    color: #2B3F45 !important;
+}
+
+.section8 h6 {
+    font-family: ''Sofia Pro'';
+}
+
+/*section 8 css start here */
+
+
+/*section 9 css start here */
+.section9 {
+    background-color: #F2EDE7;
+}
+
+.section9 h3 {
+    color: #2B3F45;
+    margin-bottom: 30px;
+}
+
+.section9 .insta_boxs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.section9 .insta_box {
+    width: 19%;
+}
+
+.section9 .insta_box img {
+    max-width: 223px;
+}
+
+/*section 9 css start here */
+
+
+/*section 10 css start here */
+.section10 {
+    background-color: #D3E1E3;
+    padding: 100px 0;
+}
+
+.section10 .sec10_txt {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section10 .sec10_txt img {
+    max-width: 242px;
+    height: 100%;
+}
+
+.section10 .sec10_txt .img1 {
+    bottom: -160px;
+    position: relative;
+}
+
+.section10 .sec10_txt .img2 {
+    top: -40px;
+    position: relative;
+}
+
+.section10 .head_text_one {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/*section 10 css end here */
+
+/*section11 css start here */
+.section11 {
+    background-image: url('https://cdn.shopify.com/s/files/1/0584/2508/2052/files/Bahia-Days-Website-Pattern-1.png?v=1627658241');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 60px 0 120px;
+}
+
+.section11 .head_text {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #CFAE93;
+    padding: 30px;
+}
+
+/*section11 css start here */
+
+/*form*/
+form.sub-form,
+.bahia-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+form input {
+    outline: 0;
+    outline-offset: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 0 5px;
+    border: 1px solid #F2EDE7;
+    box-sizing: border-box;
+    background-color: transparent;
+    width: 100%;
+    max-width: 400px;
+    height: 32px;
+    border-right: 0;
+}
+
+form input:focus-visible,
+form input:focus {
+    outline: 0;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+/*footer css start here */
+footer {
+    background-color: #5A838F;
+    padding: 0 0 30px;
+}
+
+footer .footer_logo {
+    text-align: center;
+}
+
+footer .footer_logo a {
+    display: inline-block;
+    max-width: 192px;
+    top: -50px;
+    position: relative;
+}
+
+footer .footer_links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+footer .footer_links a {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #F2EDE7;
+}
+
+footer .footer_links a:hover {
+    opacity: 0.5;
+}
+
+footer .footer_social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 135px;
+    margin: 25px auto 0;
+    padding: 1em;
+}
+
+footer .footer_social a img {
+    height: 20px;
+    width: auto;
+}
+
+footer .footer_social a {
+    margin: 0 13px;
+}
+
+footer .footer_social a:hover,
+.footer_copy_write p a:hover {
+    opacity: 0.5;
+}
+
+footer .footer_copy_write {
+    margin-top: 30px;
+}
+
+footer .footer_copy_write p {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #F2EDE7;
+}
+
+footer .footer_copy_write p a {
+    color: #F2EDE7;
+}
+
+/*footer css end here */
+
+/*page 2 banner css starrt here */
+
+.banner_pg2 {
+    padding: 70px 0;
+}
+
+.banner_pg2.banner:before {
+    height: 70%;
+}
+
+.banner_pg2 img {
+    max-width: 502px;
+}
+
+.banner_pg2 .banner_text {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-bottom: 3em;
+}
+
+.banner_pg2 .banner_text h1 {
+    margin-bottom: 40px;
+}
+
+.banner_pg2 .banner_text h3 {
+    margin-top: 20px;
+}
+
+.banner_pg2 .banner_text p {
+    color: #F2EDE7;
+    margin-top: 30px;
+}
+
+/*section 2 page*/
+.about .section2_pg2 {
+    padding: 100px 0;
+    background-color: #7BA2A8;
+    position: relative;
+}
+
+/* .about .section2_pg2:before{content: ""; position: absolute; left: 0; right: 0; top: -60px; background-image: url(https://cdn.shopify.com/s/files/1/0584/2508/2052/files/waves5.png?v=1627476973); height: 78px; width: 100%; background-repeat: no-repeat; background-size: cover; z-index: 99999; } */
+.about .section2_pg2 .sec2_pg2_img img {
+    max-width: 350px;
+}
+
+.about .section2_pg2 .sec2_pg2_text {
+    padding-left: 50px;
+}
+
+.about .section2_pg2 .sec2_pg2_text,
+.about .section2_pg2 .sec2_pg2_text h3 {
+    text-align: left;
+}
+
+.about .section2_pg2 .sec2_pg2_text h3 {
+    margin-bottom: 30px;
+}
+
+.about .section2_pg2 .sec2_pg2_text p {
+    color: #F2EDE7;
+    max-width: 500px;
+}
+
+.about .section3 .sec_box a h6 {
+    color: #2B3F45;
+}
+
+.about .section3 .button {
+    margin-top: 50px;
+}
+
+.about .section10 .max_500 {
+    max-width: 600px;
+}
+
+.about .section10 .max_500 .head_text_one {
+    margin-bottom: 50px;
+}
+
+.about .section10 .sec10_txt .img1 {
+    bottom: -70px;
+}
+
+.about .section3.section8:before {
+    display: none;
+}
+
+.about .section3.section8 .sec_box a .img_box img {
+    max-width: 320px;
+}
+
+.about .section4 .sec4_text h6 {
+    max-width: 506px;
+    margin-bottom: 20px;
+}
+
+.about .sec6_text {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about .sec6_text .head_text_one {
+    color: #F2EDE7;
+}
+
+.about .section9 {
+    position: relative;
+}
+
+/* .about .section9:before{content: ""; position: absolute; left: 0; right: 0; top: -60px; background-image: url(https://cdn.shopify.com/s/files/1/0584/2508/2052/files/waves3.png?v=1627476972); height: 78px; width: 100%; background-repeat: no-repeat; background-size: cover; z-index: 99999; } */
+
+/* animtion duration */
+body[data-aos-duration='4000'] [data-aos],
+[data-aos][data-aos][data-aos-duration='4000'] {
+    transition-duration: 4000ms;
+}
+
+
+/* miscl. */
+.footer_links.mobile {
+    display: none;
+}
+
+.section3.section8 p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.section3.section8 p br {
+    display: none
+}
+
+.waves svg {
+    width: 100%;
+}
+
+/* .waves path {transform:scaleX(2);} */
+.waves {
+    background: transparent;
+}
+
+.waves2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.waves3 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.waves-hero {
+    background: #E8DCCC;
+}
+
+.wave4 {
+    background: #5A838F;
+}
+
+.waves-about {
+    margin-top: -5em;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.footer_links li {
+    list-style: none;
+}
+
+.border-img {
+    border: 12px solid #F2ECE7;
+}
+
+.super-border {
+    border: 8em solid #F2ECE7;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+button.navbar-toggler {
+    margin-top: 1.4em;
+}
+
+#preview-bar-iframe {
+    display: none;
+}
+
+form input:focus {
+    outline: none;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+/*Home Page*/
+.header_top_line p {
+    font-size: 13px !important;
+}
+
+.heroh1 {
+    font-family: fonde;
+    font-style: normal;
+    font-size: 88px;
+    line-height: 85px;
+    letter-spacing: -0.03em;
+    color: #2B3F45;
+    margin-bottom: 20px;
+}
+
+.h3whitecenter {
+    font-family: 'Sofia Pro med' !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    text-align: center !important;
+    letter-spacing: 0.01em !important;
+    color: #F2EDE7 !important;
+}
+
+.h3bluecenter {
+    font-family: 'Sofia Pro med' !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    text-align: center !important;
+    letter-spacing: 0.01em !important;
+}
+
+.h2homepage {
+    font-family: 'Sofia Pro med';
+    font-style: normal;
+    font-size: 48px;
+    line-height: 54px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #2B3F45;
+    margin-bottom: 35px;
+}
+
+.storysubheader {
+    font-size: 24px;
+    margin-bottom: 30px !important;
+}
+
+.spaced-section {
+    margin-top: 0px !important;
+}
+
+
+.button--primary {
+    color: #2B3F45;
+    background-color: #D9BAA0;
+    padding: 10px 20px;
+    border: none;
+}
+
+@media only screen and (max-width: 1081px) {
+    .mb_show {
+        display: none !important;
+    }
+
+    .section2 {
+        padding: 72px 20px 120px 20px !important;
+    }
+
+    #Banner-template--14745359253700__1629920507220752f6 {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+
+/*Collection Pages*/
+
+body {
+    background: #FFFAF5 !important;
+}
+
+.collection-hero__title {
+    font-size: 56px;
+    text-align: center;
+    font-family: 'Sofia Pro';
+}
+
+.collection-product-count p {
+    margin-bottom: 30px;
+}
+
+.collection {
+    padding-bottom: 80px !important;
+}
+
+.collection-product-count {
+    margin-bottom: 20px;
+}
+
+.card-information__text {
+    font-family: 'Sofia Pro';
+    font-size: 18px;
+}
+
+.price {
+    font-family: 'Sofia Pro';
+    font-size: 14px !important;
+}
+
+/* Product Pages */
+
+.spaced-section:last-child {
+    padding-bottom: 80px;
+}
+
+.product__title {
+    font-size: 42px;
+    line-height: 52px;
+    margin-top: 20px !important;
+}
+
+.product-recommendations__heading {
+    font-size: 24px;
+}
+
+
+.product__description {
+    font-size: 16px !important;
+}
+
+.product-form__submit {
+    background-color: #D9BAA0;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    text-align: center !important;
+}
+
+.product-section {
+    padding-top: 100px;
+}
+
+
+/*Blog*/
+
+.blog__title {
+    font-size: 32px;
+}
+
+.article-card__info {
+    padding: 5px;
+}
+
+.article-card__title {
+    font-size: 24px;
+}
+
+.article-card__header {
+    background: none;
+    padding: 0px;
+}
+
+.article-card__link {
+    text-align: center !important;
+}
+
+/* Policy Pages*/
+
+.shopify-policy__title h1 {
+    font-family: 'Sofia Pro';
+    margin-top: 50px;
+    font-size: 32px;
+}
+
+/*Cart*/
+
+.totals h3 {
+    color: #2B3F45 !important;
+}
+
+.cart__checkout-button {
+    background-color: #5A838F;
+    color: #fff;
+    border: none;
+    padding: 12px;
+}
+
+
+/*Contact Page*/
+
+.button submit {
+    background-color: #D9BAA0;
+    border: none;
+    color: #fff;
+    text-align: center !important;
+}
+
+#shopify-section-template--14745359319236__16297414741c231d65 {
+    padding-top: 50px;
+}
+
+/*FAQ Page*/
+
+.main-page-title {
+    font-family: fonde;
+    font-style: normal;
+    font-size: 62px;
+    line-height: 85px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #2B3F45;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#shopify-section-template--14745359352004__main {
+    padding-top: 100px
+}
+
+/*Contact Page*/
+
+.contact_button {
+    background-color: #d9baa0;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    text-align: center !important;
+    width: 200px;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .caption-with-letter-spacing {
+        margin-top: 25px;
+    }
+
+    .product__title {
+        line-height: 48px;
+        padding-top: 30px;
+    }
+}
+
+/*Gift Reggie*/
+
+@media only screen and (min-width: 600px) {
+    .giftreggie-front {
+        padding-left: 300px;
+        padding-right: 300px;
+        padding-top: 80px;
+        padding-bottom: 150px;
+        background-color: #F2EDE7;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .giftreggie-front {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 80px;
+        padding-bottom: 150px;
+        background-color: #F2EDE7
+    }
+}
+
+.giftreggie-front h3 {
+    font-family: fonde;
+    font-size: 48px;
+    margin-bottom: 50px;
+    line-height: 1;
+}
+
+.giftreggie-front h4 {
+    font-family: 'Sofia Pro med';
+    font-size: 48px;
+    text-transform: capitalize !important;
+}
+
+.giftreggie-landing-overview {
+    margin: auto;
+}
+
+.giftreggie-front {
+    text-align: center;
+    min-height: 500px;
+}
+
+.giftreggie-landing-row h4 {
+    text-align: center !important
+}
+
+.giftreggie-body form input {
+    color: #2b3f45;
+    border: 1px solid #2b3f45;
+    background-color: #E8DCCC;
+}
+
+@media only screen and (max-width: 760px) {
+    .giftreggie-manage-non-customer {
+        width: auto !important;
+    }
+}
+
+#CustomerEmail,
+#CustomerPassword {
+    width: auto;
+}
+
+.giftreggie-front h4 {
+    font-size: 25px;
+}
+
+.registry-profile span {
+    text-align: left;
+}
+
+.giftreggie-band {
+    background-color: #D3E1E3 !important;
+}
+
+.giftreggie-header a {
+    color: #2b3f45 !important;
+}
+
+.giftreggie-registry p {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.giftreggie-no-products a {
+    font-family: Sofia Pro;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: .02em;
+    color: #2b3f45;
+    border: 1px solid #2b3f45;
+    box-sizing: border-box;
+    padding: 15px 22px;
+    border-radius: 0;
+}
+
+.giftreggie-registry button {
+    background-color: #5A838F !important;
+    border: none !important;
+    color: #fff !important;
+    padding-top: 4px;
+}
+
+.giftreggie-registry-password-action input {
+    color: #2b3f45;
+    border: 1px solid #2b3f45;
+    background-color: #E8DCCC;
+}
+
+.giftreggie-registry-password-action button {
+    background-color: #5A838F !important;
+    border: none !important;
+    color: #fff !important;
+    padding-top: 4px;
+}
+
+/* Buddha Mega Menu */
+
+.mm-title {
+    font-family: 'Sofia Pro med';
+    margin-bottom: 10px !important;
+    letter-spacing: 0px !important;
+    color: #2B3F45 !important;
+}
+
+.mm-submenu {
+    font-family: 'Sofia Pro';
+    margin-bottom: 50px !important;
+}
+
+.mm-product-name {
+    font-family: 'Sofia Pro med' !important;
+    text-align: left !important;
+    letter-spacing: 0px !important;
+}
+
+.mega-menu-price {
+    font-family: 'Sofia Pro med' !important;
+    text-align: left !important;
+    letter-spacing: 0px !important;
+    color: #2B3F45 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .mm-title {
+        margin-bottom: 40px !important;
+    }
+
+}
+
+/*Gift Wrapping Infinite Options*/
+
+.spb-productoptiontextcolor {
+    margin-left: 10px;
+}
+
+/*New Announcement Bar*/
+
+
+.announcement-bar__message {
+    font-family: 'Sofia Pro' !important;
+    color: #2B3F45;
+    letter-spacing: 0px;
+}
+
+
+/*Blog Posts*/
+
+#MainContent {
+    background-color: #F2EDE7;
+}
+
+.article-template {
+    width: 45%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+    .article-template {
+        width: 75%;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .article-template {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.spb-productoptiontextcolor {
+    vertical-align: bottom;
+    width: 20px !important;
+    margin-right: 1rem !important;
+}

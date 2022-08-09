@@ -1,0 +1,60 @@
+ <!-- section 9 start here  -->
+    <div class="section9">
+      <div class="container">
+      <div class="head_text">
+        <h3 class="h3bluecenter">{{section.settings.ighead}}</h3>
+      </div>
+      <div class="insta_boxs">
+{% for block in section.blocks %}
+
+     <div class="insta_box"><a href="#"><img src="{{ block.settings.image | img_url: 'master' }}" alt="box image" /></a></div>
+    
+{% endfor %}
+        
+      </div>
+      </div>  
+    </div>
+    <!-- section 9 end here  -->
+
+
+
+{% schema %}
+  {
+    "name": "Instagram section",
+    "settings": [
+	{
+	"type": "textarea",
+	"id":"ighead",
+	"label": "Heading for instagram section"
+
+}],
+     "presets" : [
+	{ 
+	"name" : "Instagram Section",
+	"category" : "homepage"
+}
+
+] ,
+"blocks": [
+     {
+       "name": "instagram images",
+       "type": "image",
+       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+           "label": "image"
+        }
+      
+      ]
+     }
+   ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

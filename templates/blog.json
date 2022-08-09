@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_date": false,
+            "show_author": false
+          }
+        },
+        "summary": {
+          "type": "summary",
+          "settings": {
+          }
+        },
+        "link": {
+          "type": "link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "summary",
+        "link"
+      ],
+      "settings": {
+        "show_image": false
+      }
+    },
+    "1629411648d822490d": {
+      "type": "featured-blog",
+      "blocks": {
+        "1629411648d822490d-0": {
+          "type": "title",
+          "settings": {
+            "show_date": false,
+            "show_author": false
+          }
+        },
+        "1629411648d822490d-1": {
+          "type": "summary",
+          "settings": {
+          }
+        },
+        "1629411648d822490d-2": {
+          "type": "link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "1629411648d822490d-0",
+        "1629411648d822490d-1",
+        "1629411648d822490d-2"
+      ],
+      "settings": {
+        "heading": "The Bahia Blog",
+        "blog": "featured",
+        "post_limit": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "soft_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1629411648d822490d"
+  ]
+}

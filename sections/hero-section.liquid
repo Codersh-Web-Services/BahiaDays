@@ -1,0 +1,150 @@
+ <!-- banner section start here  -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-xs-12">
+            <div class="banner_text">
+              <p class="upper_case">{{ section.settings.subtitle }}</p>
+              <div class="mb_show"><img src="{{ section.settings.hero | img_url : 'master'}}"  alt="hero image" class="border-img" /></div>
+              <h1>{{ section.settings.title }} </h1>
+              <div class="font_14">
+                <p>{{section.settings.subhead}}</p>
+              </div>
+              <div class="button">
+                <a href="{{section.settings.button_link}}" class="btn btn_black">{{section.settings.button}}</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-xs-12">
+            <div class="banner_right_img">
+              <img src="{{ section.settings.banner1 | img_url : 'master'}}" alt="banner right img " data-aos="fade-in"  data-aos-duration="4000" class="border-img " />
+              <img src="{{ section.settings.banner2 | img_url : 'master'}}"  alt="banner right img " data-aos="fade-in"  data-aos-duration="4000" class="border-img " />
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+        <div class="waves waves-hero">
+
+<svg  height="200px"  fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<path  fill="#5a838f"> 
+  <animate repeatCount="indefinite" 
+  
+          attributeName="d" 
+          dur="15s"
+          attributeType="XML"
+          values="
+            M0 77 
+            C 473,283
+              822,-40
+              1920,116 
+            
+            V 359 
+            H 0 
+            V 2 
+            Z; 
+
+            M0 77 
+            C 473,-40
+              1222,283
+              3332,136 
+            
+            V 359 
+            H 0 
+            V 30 
+            Z; 
+
+            M0 12 
+            C 973,260
+              1722,-53
+              1920,120 
+            
+            V 332 
+            H 0 
+            V 67 
+            Z; 
+
+            M0 77 
+            C 473,283
+              822,-40
+              1920,116 
+            
+            V 359 
+            H 0 
+            V 30 
+            Z
+            ">
+        </animate>
+        </path>
+</svg>
+    </div>
+
+    <!-- banner section End here  -->
+
+{% schema %}
+  {
+    "name": "Hero section",
+    "settings": [
+{
+  "type": "text",
+  "id": "subtitle",
+  "label": "subtitle"
+},
+
+{
+  "type": "text",
+  "id": "title",
+  "label": "Title"
+},
+{
+  "type": "html",
+  "id": "subhead",
+  "label": "sub heading"
+},
+
+
+{
+  "type": "image_picker",
+  "id": "hero",
+  "label": "hero image"
+},
+{
+  "type": "image_picker",
+  "id": "banner1",
+  "label": "banner1 image"
+},
+{
+  "type": "image_picker",
+  "id": "banner2",
+  "label": "banner2 image"
+},
+{
+  "type": "text",
+  "id": "button",
+  "label": "Button"
+},
+{
+  "type": "url",
+  "id": "button_link",
+  "label": "Button link"
+}
+
+],
+	"presets": [
+      {
+        "name": "Hero section",
+        "category": "homepage"
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,68 @@
+  <!-- section 5 start here -->
+    <div class="section5" id="shopby">
+      <div class="container">
+        <div class="head_text">
+          <h3 class="h3bluecenter">{{section.settings.head}}</h3>
+            <div class="round_boxs">
+              {% for block in section.blocks %}
+  <!-- output block content -->
+            <div class="round_box">
+                <a href="{{ block.settings.collection.url}}"> 
+                <img src='{{ block.settings.collection.featured_image | img_url: 'master' }}' alt="image" />
+                <p>{{block.settings.age}}</p>
+                  </a>
+              </div> 
+{% endfor %}
+             
+              
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- section 5 end here -->
+{% schema %}
+  {
+    "name": "Shop by section",
+    "settings": [
+	{
+"type" : "text",
+"id" : "head",
+"label" : "heading title"
+
+}
+
+],
+	"presets": [
+      {
+        "name": "Shop by section",
+        "category": "homepage"
+      } ]
+,
+"blocks": [
+     {
+       "name": "shop by",
+       "type": "all",
+       "settings": [
+        
+		{
+           "type": "text",
+           "id": "age",
+           "label": "Age range"
+         },
+{
+           "type": "collection",
+           "id": "collection",
+           "label": "collection name"
+         }
+       ]
+     }
+   ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

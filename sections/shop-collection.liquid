@@ -1,0 +1,183 @@
+
+<!-- section 7 start here -->
+    <div class="section3 section7">
+      <div class="container">
+        <div class="head_text">
+          <h3>{{section.settings.title}}</h3>
+        </div>
+        <div class="row">
+          
+             {% for block in section.blocks %}
+  <!-- output block content -->
+          <div class="col-md-3 col-">
+            <div class="sec_box">
+              <a href="{{ block.settings.collection.url}}">
+                <div class="img_box"><img src="{{ block.settings.collection.featured_image | img_url : "master"}}" alt="collection img" /></div>
+                <h6>{{ block.settings.collection.title}}</h6>
+              </a>
+            </div>
+          </div>
+			{% endfor %}
+    
+          
+     
+       
+        </div>
+
+      </div>
+      
+    </div>
+    <!-- section 7 End here -->
+
+{% schema %}
+{
+  "name": {
+    "cs": "Propagovaná kolekce",
+    "da": "Udvalgt kollektion",
+    "de": "Vorgestellte Kategorie",
+    "en": "Shop collection",
+    "es": "Colección destacada",
+    "fi": "Esittelyssä oleva kokoelma",
+    "fr": "Collection en vedette",
+    "it": "Collezione in evidenza",
+    "ja": "特集コレクション",
+    "ko": "추천 컬렉션",
+    "nb": "Utvalgt samling",
+    "nl": "Uitgelichte collectie",
+    "pl": "Polecana kolekcja",
+    "pt-BR": "Coleção em destaque",
+    "pt-PT": "Coleção em destaque",
+    "sv": "Utvald kollektion",
+    "th": "คอลเลกชันแนะนำ",
+    "tr": "Öne çıkan koleksiyon",
+    "vi": "Bộ sưu tập nổi bật",
+    "zh-CN": "特色产品系列",
+    "zh-TW": "精選商品系列"
+  },
+  
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Propagovaná kolekce",
+        "da": "Udvalgt kollektion",
+        "de": "Vorgestellte Kategorie",
+        "en": "Shop collection",
+        "es": "Colección destacada",
+        "fi": "Esittelyssä oleva kokoelma",
+        "fr": "Collection en vedette",
+        "it": "Collezione in evidenza",
+        "ja": "特集コレクション",
+        "ko": "추천 컬렉션",
+        "nb": "Fremhevet samling",
+        "nl": "Uitgelichte collectie",
+        "pl": "Polecana kolekcja",
+        "pt-BR": "Coleção em destaque",
+        "pt-PT": "Coleção em destaque",
+        "sv": "Utvald kollektion",
+        "th": "คอลเลกชันแนะนำ",
+        "tr": "Öne çıkan koleksiyon",
+        "vi": "Bộ sưu tập nổi bật",
+        "zh-CN": "特色产品系列",
+        "zh-TW": "精選商品系列"
+      }
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Propagovaná kolekce",
+        "da": "Udvalgt kollektion",
+        "de": "Vorgestellte Kategorie",
+        "en": "Shop collection",
+        "es": "Colección destacada",
+        "fi": "Esittelyssä oleva kokoelma",
+        "fr": "Collection en vedette",
+        "it": "Collezione in evidenza",
+        "ja": "特集コレクション",
+        "ko": "추천 컬렉션",
+        "nb": "Utvalgt samling",
+        "nl": "Uitgelichte collectie",
+        "pl": "Polecana kolekcja",
+        "pt-BR": "Coleção em destaque",
+        "pt-PT": "Coleção em destaque",
+        "sv": "Utvald kollektion",
+        "th": "คอลเลกชันแนะนำ",
+        "tr": "Öne çıkan koleksiyon",
+        "vi": "Bộ sưu tập nổi bật",
+        "zh-CN": "特色产品系列",
+        "zh-TW": "精選商品系列"
+      },
+      "category": {
+        "cs": "Kolekce",
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pl": "Kolekcja",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "tr": "Koleksiyon",
+        "vi": "Bộ sưu tập",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      }
+    }
+  ]
+,
+"blocks": [
+     {
+       "name": "Collection",
+       "type": "all",
+       "settings": [
+       
+{
+           "type": "collection",
+           "id": "collection",
+           "label": "collection name"
+         }
+       ]
+     }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

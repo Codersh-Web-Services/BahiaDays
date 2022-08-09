@@ -1,0 +1,61 @@
+ <!-- section 10 start here -->
+    <div class="section10">
+      <div class="container2">
+        <div class="sec10_txt">
+          <img src="{{ section.settings.leftimage | img_url : 'master'}}" class="img1"  alt="image" />
+          <div class="text-center">
+          <div class="head_text_one">{{section.settings.cozyhead}}</div>
+          <div class="button">
+            <a href="{{section.settings.cozyurl}}" class="btn btn_black">{{section.settings.cozybutton}}</a>
+          </div>
+          </div>
+          <img src="{{ section.settings.rightimage | img_url : 'master'}}" class="img2"   alt="image" />
+        </div>
+      </div>
+    </div>
+    <!-- section 10 end here -->
+{% schema %}
+  {
+    "name": "Shop now section",
+    "settings": [
+	{
+  "type": "image_picker",
+  "id": "leftimage",
+  "label": "left image"
+},{
+	"type" : "textarea",
+	"id": "cozyhead",
+	"label" : "heading"
+},
+{
+	"type" : "text",
+	"id": "cozybutton",
+	"label": "button name"
+},
+{
+	"type" : "url",
+	"id": "cozyurl",
+	"label": "button link"
+},
+
+{
+  "type": "image_picker",
+  "id": "rightimage",
+  "label": "right image"
+}
+
+	],
+	 "presets" : [
+	{ 
+	"name" : "Shop now Section",
+	"category" : "homepage"
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

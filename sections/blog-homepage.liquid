@@ -1,0 +1,119 @@
+   <!-- section 8 start here  -->
+    <div class="section3 section8">
+      <div class="container">
+        <div class="head_text">
+          <h3>{{section.settings.bloghead}}</h3>
+          <p>{{section.settings.blogsub}}</p>
+        </div>
+
+         <div class="row">
+          
+      {%- assign xlimit = section.settings.limit -%}      
+{% for article in section.settings.blog.articles limit: xlimit %}
+    <!-- output block content -->
+			<div class="col-md-4 col-">
+            <div class="sec_box" data-aos="fade-in" data-aos-duration="4000">
+              <a href="{{article.url}}">
+                <div class="img_box"><img src="{{article.image | img_url : 'master'}}" alt="box1 img" class="border-img"/></div>
+                <h6>{{article.title}}</h6>
+              </a>
+            </div>
+          </div>
+{% endfor %}
+         
+    
+           
+        </div>
+      </div>
+       <div class="waves waves3">
+
+<svg  height="150px"  fill="none" xmlns="http://www.w3.org/2000/svg">
+<path  fill="#F2EDE7"> 
+
+  <animate repeatCount="indefinite" 
+  
+          attributeName="d" 
+          dur="15s"
+          attributeType="XML"
+          values="
+            M0 77 
+            C 473,283
+              822,-40
+              1920,116 
+            
+            V 359 
+            H 0 
+            V 2 
+            Z; 
+
+            M0 77 
+            C 473,-40
+              1222,283
+              3332,136 
+            
+            V 359 
+            H 0 
+            V 30 
+            Z; 
+
+            M0 12 
+            C 973,260
+              1722,-53
+              1920,120 
+            
+            V 332 
+            H 0 
+            V 67 
+            Z; 
+
+            M0 77 
+            C 473,283
+              822,-40
+              1920,116 
+            
+            V 359 
+            H 0 
+            V 30 
+            Z
+            ">
+        </animate>
+        </path>
+</svg>
+</div>
+    </div>
+    <!-- section 8 end here  -->
+
+
+
+{% schema %}
+  {
+    "name": "Blog homepage",
+    "settings": [
+	{"type" : "text",
+	"id":"bloghead",
+	"label": "Blogs heading"},
+{"type" : "text",
+	"id":"blogsub",
+	"label": "Blogs Sub-heading"},
+{
+          "type": "blog",
+          "id": "blog",
+           "label": "Featured blogs"
+        },{"type" : "number",
+	"id":"limit",
+	"label": "number of blogs to show"}
+],
+	"presets" : [
+	{ "name" : "Blog homepage",
+	"category" : "homepage"
+		}]
+
+     }
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

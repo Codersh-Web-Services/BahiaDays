@@ -1,0 +1,78 @@
+
+    <!-- section 4 start here -->
+    <div class="section4">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-md-6 col- sec4_img">
+            <img src="{{ section.settings.leftimage | img_url : "master"}}"  alt="sec4 image" class="super-border"/>
+          </div>
+          <div class="col-md-6 col-">
+            <div class="sec4_text">
+              <img src="{{ section.settings.icon | img_url : "master"}}"  alt="icon"  />
+              <h2>{{section.settings.title}}</h2>
+              <h6 class="storysubheader">{{section.settings.subtitle}}</h6>
+              <h6>{{section.settings.content}}</h6>
+              <div class="button">
+                <a href="{{section.settings.button_link}}" class="btn btn_black">{{section.settings.button}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- section 4 End here -->
+{% schema %}
+  {
+    "name": "Boutique for Boys",
+    "settings": [
+{
+  "type": "text",
+  "id": "title",
+  "label": "title"
+},
+{
+  "type": "text",
+  "id": "subtitle",
+  "label": "subtitle"
+},
+{
+  "type": "textarea",
+  "id": "content",
+  "label": "content"
+},
+{
+  "type": "text",
+  "id": "button",
+  "label": "button"
+},
+{
+  "type": "url",
+  "id": "button_link",
+  "label": "button link"
+},
+{
+  "type": "image_picker",
+  "id": "leftimage",
+  "label": "left image"
+},
+{
+  "type": "image_picker",
+  "id": "icon",
+  "label": "icon"
+}
+
+],
+	"presets": [
+      {
+        "name": "Boutique for Boys",
+        "category": "homepage"
+      }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

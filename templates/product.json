@@ -1,0 +1,137 @@
+{
+  "order": [
+    "main",
+    "product-giftreggie",
+    "product-recommendations"
+  ],
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "subtitle",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "enable_video_looping": false
+      }
+    },
+    "product-giftreggie": {
+      "type": "product-giftreggie",
+      "blocks": {
+        "39c8c262-6b70-4a05-9831-6e9c99cc9bea": {
+          "type": "registry",
+          "settings": {
+            "gr_invisible": false,
+            "gr_not_ajax": false,
+            "gr_add_failure_message": "Could not add item to registry. Please contact shop with the product you were trying to add.",
+            "gr_button_width": 100,
+            "gr_margin_top": -30,
+            "gr_margin_left": 0,
+            "gr_css_classes": "",
+            "gr_css_style": "color: #2B3F45;\n    text-align: left !important;\ntext-decoration:underline;\nborder:none;"
+          }
+        },
+        "1d8e104d-d211-4204-bd04-7e662d6abad0": {
+          "type": "wishlist",
+          "settings": {
+            "gr_invisible": false,
+            "gr_add_failure_message": "Could not add item to wishlist. Please contact shop with the product you were trying to add.",
+            "gr_button_width": 100,
+            "gr_margin_top": 10,
+            "gr_margin_left": 0,
+            "gr_wishlist_use_image": false,
+            "gr_css_classes": "",
+            "gr_css_style": "color: #2B3F45;\n    text-align: left !important;\ntext-decoration:underline;\nborder:none;"
+          }
+        }
+      },
+      "block_order": [
+        "39c8c262-6b70-4a05-9831-6e9c99cc9bea",
+        "1d8e104d-d211-4204-bd04-7e662d6abad0"
+      ],
+      "settings": {
+        "gr_enable_buttons": true,
+        "gr_custom_buttons": false,
+        "gr_append_to_form": true,
+        "gr_button_layout": "stacked",
+        "gr_button_alignment": "justify",
+        "gr_no_id": "disable",
+        "gr_overwrite_color": false,
+        "gr_button_color": "#ffffff",
+        "gr_overwrite_background": false,
+        "gr_background_color": "#111111"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    }
+  }
+}

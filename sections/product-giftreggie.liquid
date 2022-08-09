@@ -1,0 +1,779 @@
+{% if section.settings.gr_enable_buttons %}
+{% comment %}Library that will do all the communication to and from gift reggie.{% endcomment %}
+{{ 'giftreggie.js' | asset_url | script_tag }}
+
+{% comment %} 
+	This section is where the buttons get rendered.
+	A registry button is inserted inside every <div class="gift-reggie-buttons"><div class="gift-reggie-registry-button"><input type='hidden' class='gift-reggie-hook' value=""></div></div>
+	A wishlist button is inserted inside every <div class="gift-wishlist-buttons"><div class="gift-reggie-registry-button"><input type='hidden' class='gift-reggie-hook' value=""></div></div>
+	If you want to move the buttons to a specific place on your page you'll want to remove the following 10 lines of html and liquid and insert the html (without liquid) wherever you want it to appear.
+{% endcomment %}
+{% unless section.settings.gr_custom_buttons %}
+<div class="gift-reggie-buttons">
+	{% for block in section.blocks %}
+		{% case block.type %}
+		{% when 'registry' %}
+				<div class="gift-reggie-registry-button"><input type='hidden' class='gift-reggie-hook' value=""></div>
+		{% when 'wishlist' %}
+				<div class="gift-reggie-wishlist-button"><input type='hidden' class='gift-reggie-hook' value=""></div>
+		{% endcase %}
+	{% endfor %}
+</div>
+{% endunless %}
+
+<script type='text/javascript'>
+		var gift_reggie = gift_reggie || {}
+		gift_reggie.is_first_load = function(namespace){
+						var is_first_load = namespace.is_first_load === undefined
+						namespace.is_first_load = false
+						if(!is_first_load){
+								console.log("Warning: Loaded " + namespace.name() + " more than once.");
+						}
+						return is_first_load
+		}
+		gift_reggie.find_cart_id_in_form = function(form) {
+			var o = form.querySelector("[name='id']");
+			var id = o ? o.value : null;
+			if(o && !id)
+				id = o.getAttribute("value");
+			return id; 
+		}
+		gift_reggie.find_quantity_in_form = function(form) { 
+				var o = form.querySelector("[name='quantity']");
+				var quantity = o ? o.value : null;
+				if(o && !quantity)
+					quantity = o.getAttribute("value");
+				return quantity || 1;
+		}
+		gift_reggie.current_language = "{% if request.locale and shop.primary_locale and request.locale.iso_code and request.locale.iso_code != shop.primary_locale %}{{ request.locale.iso_code }}{% else %}{{ shop.metafields.language_codes[cart.attributes['language']] }}{% endif %}";
+		gift_reggie.language_param = gift_reggie.current_language != "" ? "&lang=" + encodeURIComponent(gift_reggie.current_language) : "";
+		gift_reggie.language_initial_param = gift_reggie.language_param != "" ? gift_reggie.language_param.replace("&", "?") : "";
+		gift_reggie.createElement = function(text) { return document.createRange().createContextualFragment(text).children[0]; };
+		gift_reggie.session = null;
+		{% if customer %}
+			GiftReggie.getSession({{ customer.id }}, "{{ customer.email }}", "{{ customer.metafields['gift-reggie']['shared-secret'] }}").done(function(data) {
+				gift_reggie.session = data;
+			});
+		{% endif %}
+		gift_reggie.used_buttons = { wishlist: [], registry: [] };
+		gift_reggie.update_button_state = function(form, div, button = null){
+			var id = gift_reggie.find_cart_id_in_form(form);
+			var inputs = null
+			if(button){
+				inputs = [button]
+			}
+			else {
+				inputs = form.querySelectorAll(".gift-reggie-buttons input");
+			}
+			if(id){
+				{% if section.settings.gr_no_id == "hide" %}
+					form.querySelector(".gift-reggie-buttons").style.visibility = null;
+					for (var i = 0, len = inputs.length; i < len; i++) {
+							inputs[i].style.visibility = null;
+					}
+				{% elsif section.settings.gr_no_id == "disable" %}
+					for (var i = 0, len = inputs.length; i < len; i++) {
+							inputs[i].removeAttribute("disabled");
+					}
+				{% endif %}
+			}
+			else {
+				{% if section.settings.gr_no_id == "hide" %}
+					form.querySelector(".gift-reggie-buttons").style.visibility = "hidden";
+					for (var i = 0, len = inputs.length; i < len; i++) {
+							inputs[i].style.visibility = "hidden";
+					}
+				{% elsif section.settings.gr_no_id == "disable" %}
+					for (var i = 0; i < inputs.length; i++) {
+						inputs[i].setAttribute("disabled", "disabled");
+					}
+				{% endif %}
+			}
+		}
+		function pollChange(){
+			for (var i = 0; i < gift_reggie.used_buttons.registry.length; i++) {
+				button = gift_reggie.used_buttons.registry[i];
+				gift_reggie.update_button_state(button.form, button.div);
+			}
+			for (var i = 0; i < gift_reggie.used_buttons.wishlist.length; i++) {
+				button = gift_reggie.used_buttons.wishlist[i];
+				gift_reggie.wishlist_button.update_button(button.div, "basic");
+				gift_reggie.update_button_state(button.form, button.div);
+			}
+			setTimeout(pollChange,500);
+		}
+		setTimeout(pollChange,500);
+</script>
+
+{% for block in section.blocks %}
+	{% case block.type %}
+	{% when 'registry' %}
+		<div {{ block.shopify_attributes }}>
+		{% if block.settings.gr_invisible != true or customer and cart.attributes['registry_id'] and cart.attributes['registry_admin'] %}
+			<script type='text/javascript'>
+					gift_reggie.registry_button = gift_reggie.registry_button || {}
+					gift_reggie.registry_button.name = function() { return "registry_button"; }
+					gift_reggie.registry_button.language = {
+							default: "en",
+							add_button: {
+									"en": "Add to Registry",
+									"fr": "Ajoutez Ã  la Liste"
+							},
+							added: {
+									"en": "Added!",
+									"fr": "AjoutÃ©!"
+							},
+							removed: {
+									"en": "Removed!",
+									"fr": "EnlevÃ©!"
+							}
+					}
+					// returns what the button text should be given an action
+					gift_reggie.registry_button.button_text = function(div, action){
+							var form = div.querySelector(".gift-reggie-hook").form;
+							var id = gift_reggie.find_cart_id_in_form(form);
+							var value = ""
+							switch(action){
+									case "basic":
+											value = gift_reggie.registry_button.language.add_button[gift_reggie.current_language] ? gift_reggie.registry_button.language.add_button[gift_reggie.current_language] : gift_reggie.registry_button.language.add_button[gift_reggie.registry_button.language.default];
+											break;
+									case "added":
+											value = gift_reggie.registry_button.language.added[gift_reggie.current_language] ? gift_reggie.registry_button.language.added[gift_reggie.current_language] : gift_reggie.registry_button.language.added[gift_reggie.registry_button.language.default];
+											break;
+									case "removed":
+											value = gift_reggie.registry_button.language.removed[gift_reggie.current_language] ? gift_reggie.registry_button.language.removed[gift_reggie.current_language] : gift_reggie.registry_button.language.removed[gift_reggie.registry_button.language.default];
+											break;
+							}
+							return value
+					}
+					gift_reggie.registry_button.clear_cart_attributes = function() {
+						GiftReggie.ajax({
+							url: '/cart/update.js', 
+							type: "POST", 
+							data: { 
+								attributes: {
+									'registry_admin': '',
+									'registry_id': ''
+								}
+							},
+							contentType: 'json',
+							dataType: 'json'
+						}).done(function(){
+							GiftReggie.deleteCookie("giftreggie_session_cookie");
+							gift_reggie.registry_button.registry = null;
+						});
+					}
+					gift_reggie.registry_button.publishButton = function(div) {
+							var form = div.querySelector(".gift-reggie-hook").form;
+							{% if section.settings.gr_append_to_form %}
+							if(!form){
+									form = document.querySelector("form[action*='/cart/add']");
+									form.appendChild(div.parentElement);
+							}
+							{% endif %}
+							if (form && /cart/.test(form.getAttribute('action'))) {
+									var button = gift_reggie.createElement("<input type='button' class='add-registry {{ block.settings.gr_css_classes }}' value='" + gift_reggie.registry_button.button_text(div, "basic") + "'>");
+									gift_reggie.update_button_state(form, div, button);
+									div.appendChild(button);
+									gift_reggie.used_buttons.registry.push({ div: div, form: form, button: button });
+									button.addEventListener("click", function(e) {
+											{% if cart.attributes['registry_id'] and cart.attributes['registry_admin'] and customer %}
+													var product_id = {{ product.id }};
+													var variant_id = gift_reggie.find_cart_id_in_form(form);
+													var quantity = gift_reggie.find_quantity_in_form(form);
+													var properties = {};
+													form.querySelectorAll("input").forEach(processInputs);
+													form.querySelectorAll("select").forEach(processInputs);
+													function processInputs(item, index, arr) {
+															if (!item.disabled) {
+																	if ((item.getAttribute("type") == 'checkbox' || item.getAttribute("type") == 'radio') && !item.checked)
+																			return;
+																	var groups = /properties\[([^\]]+)\]/.exec(item.getAttribute('name'));
+																	if (groups && groups.length > 1) {
+																			properties[groups[1]] = item.value;
+																	}
+															}
+													}
+													// We add to the DOM in this manner to deal with IE issues.
+													if (variant_id) {
+															if (!gift_reggie.session || !gift_reggie.registry_button.registry) {
+                                if(!window.Shopify || !window.Shopify.designMode)
+																    window.location = "{% if routes.root_url != "/" %}{{ routes.root_url  }}{% endif %}/apps/giftregistry/manage?id=" + variant_id + gift_reggie.language_param;
+                                else
+                                    alert("This action was disabled because the theme customizer does not support it.")
+																return false;
+															}
+															button.setAttribute("value","...");
+															gift_reggie.session.addRegistryProducts(gift_reggie.registry_button.registry.id, product_id, variant_id, quantity, properties).done(function() {
+																button.setAttribute("value", gift_reggie.registry_button.button_text(div, "added"));
+																{% if block.settings.gr_not_ajax %}
+                                    if(!window.Shopify || !window.Shopify.designMode)
+                                        window.location = "{% if routes.root_url != "/" %}{{ routes.root_url  }}{% endif %}/apps/giftregistry/registry/{{ cart.attributes.registry_id }}?sid="+ encodeURIComponent(gift_reggie.registry_button.session_id) + gift_reggie.language_param;
+                                    else
+                                        alert("This action was disabled because the theme customizer does not support it.")
+																{% else %}
+																		setTimeout(function() { button.setAttribute("value",gift_reggie.registry_button.button_text(div, "basic")); }, 1000);
+																{% endif %}
+															}).fail(function(e) {
+																if(e.status == 404){
+																	alert("The registry you are shopping for no longer exists.");
+																	gift_reggie.registry_button.clear_cart_attributes();
+																}
+																else {
+																	alert("Unable to add product to registry.");
+																}
+																button.setAttribute("value",gift_reggie.registry_button.button_text(div, "basic"));
+																button.removeAttribute('disabled');
+															});
+													}
+													else {
+															alert("{{ block.settings.gr_add_failure_message }}");
+													}
+											{% else %}
+													{% if customer %}
+															if (gift_reggie.registry_button.session_id){
+                                if(!window.Shopify || !window.Shopify.designMode)
+                                    window.location = "{% if routes.root_url != "/" %}{{ routes.root_url  }}{% endif %}/apps/giftregistry/create?sid=" + encodeURIComponent(gift_reggie.registry_button.session_id) + gift_reggie.language_param;
+                                else
+                                    alert("This action was disabled because the theme customizer does not support it.")
+                              }
+															else {
+                                  if(!window.Shopify || !window.Shopify.designMode)
+                                      window.location = "{% if routes.root_url != "/" %}{{ routes.root_url  }}{% endif %}/apps/giftregistry/create" + gift_reggie.language_initial_param;
+                                  else
+                                      alert("This action was disabled because the theme customizer does not support it.")
+                              }
+													{% else %}
+                              if(!window.Shopify || !window.Shopify.designMode)
+                                  window.location = "{% if routes.root_url != "/" %}{{ routes.root_url  }}{% endif %}/apps/giftregistry/signup" + gift_reggie.language_initial_param;
+                              else
+                                  alert("This action was disabled because the theme customizer does not support it.")
+													{% endif %}
+											{% endif %}
+											return false;
+									});
+							}
+							else {
+									console.log("Could not find add to cart form. Please remove or modify section to comply with your theme.");
+							}
+							return false;
+					};
+					window.addEventListener('DOMContentLoaded', function() {
+						if(!gift_reggie.is_first_load(gift_reggie.registry_button)) {
+							return;
+						}
+						gift_reggie.registry_button.session_id = GiftReggie.getCookie("giftreggie_session_cookie");
+						{% if cart.attributes['registry_id'] %}
+							gift_reggie.registry_button.registry = { id: {{ cart.attributes['registry_id'] }} };
+						{% endif %}
+						{% unless customer %}
+								if (gift_reggie.registry_button.session_id) {
+										gift_reggie.registry_button.session_id = null;
+										gift_reggie.registry_button.clear_cart_attributes();
+								}
+						{% endunless %}
+						document.querySelectorAll(".gift-reggie-registry-button").forEach(function(item, index) { gift_reggie.registry_button.publishButton(item); });
+					});
+			</script>
+			<style>
+			.gift-reggie-registry-button {
+        margin-top:{{ block.settings.gr_margin_top }}px;
+        margin-left:{{ block.settings.gr_margin_left }}px;
+        width:{% if section.settings.gr_button_layout == "side_by_side" %}{{ block.settings.gr_button_width | divided_by: 2 }}{% else %}{{ block.settings.gr_button_width }}{% endif %}%;
+			}
+			.gift-reggie-registry-button input,
+			.gift-reggie-registry-button img {
+				width:100%;
+        {% if section.settings.gr_overwrite_color %}
+          color: {{ section.settings.gr_button_color }};
+        {% endif %}
+        {% if section.settings.gr_overwrite_background %}
+          background-color: {{ section.settings.gr_background_color }};
+        {% endif %}
+				{{ block.settings.gr_css_style }}
+			}
+			</style>
+		{% endif %}
+		</div>
+	{% when 'wishlist' %}
+		<div {{ block.shopify_attributes }}>
+			{% if block.settings.gr_invisible != true or customer and cart.attributes['wishlist_id']  %}
+				<script type='text/javascript'>
+					gift_reggie.wishlist_button = gift_reggie.wishlist_button || {}
+					gift_reggie.wishlist_button.name = function() { return "wishlist_button"; }
+					gift_reggie.wishlist_button.language = {
+						default: "en",
+						add_button: {
+							"en": "Add to Wishlist",
+							"fr": "Ajoutez Ã  la Liste de Souhaits"
+						},
+						remove_button: {
+							"en": "Remove from Wishlist",
+							"fr": "Enlever de la Liste de Souhaits"
+						},
+						added: {
+							"en": "Added!",
+							"fr": "AjoutÃ©!"
+						},
+						removed: {
+							"en": "Removed!",
+							"fr": "EnlevÃ©!"
+						}
+					}
+					// returns what the button text should be given an action
+					gift_reggie.wishlist_button.button_text = function(div, action){
+						var form = div.querySelector(".gift-reggie-hook").form;
+						var id = gift_reggie.find_cart_id_in_form(form);
+						var value = ""
+						{% if block.settings.gr_wishlist_use_image %}
+							if (gift_reggie.wishlist_button.variant_ids[id]) // Item already in wishlist
+								value = "{% if block.settings.gr_wishlist_image_on %}{{ block.settings.gr_wishlist_image_on | img_url: 'small' }}{% else %}{{ 'gr_heart_filled.png' | asset_url }}{% endif %}";
+							else // Item not in wishlist
+								value = "{% if block.settings.gr_wishlist_image_off %}{{ block.settings.gr_wishlist_image_off | img_url: 'small' }}{% else %}{{ 'gr_heart_empty.png' | asset_url }}{% endif %}";
+						{% else %}
+						switch(action){
+							case "basic":
+								if (gift_reggie.wishlist_button.variant_ids[id]) // Item already in wishlist
+									value = gift_reggie.wishlist_button.language.remove_button[gift_reggie.current_language] ? gift_reggie.wishlist_button.language.remove_button[gift_reggie.current_language] : gift_reggie.wishlist_button.language.remove_button[gift_reggie.wishlist_button.language.default];
+								else // Item not in wishlist
+									value = gift_reggie.wishlist_button.language.add_button[gift_reggie.current_language] ? gift_reggie.wishlist_button.language.add_button[gift_reggie.current_language] : gift_reggie.wishlist_button.language.add_button[gift_reggie.wishlist_button.language.default];
+								break;
+							case "added":
+								value = gift_reggie.wishlist_button.language.added[gift_reggie.current_language] ? gift_reggie.wishlist_button.language.added[gift_reggie.current_language] : gift_reggie.wishlist_button.language.added[gift_reggie.wishlist_button.language.default];
+								break;
+							case "removed":
+								value = gift_reggie.wishlist_button.language.removed[gift_reggie.current_language] ? gift_reggie.wishlist_button.language.removed[gift_reggie.current_language] : gift_reggie.wishlist_button.language.removed[gift_reggie.wishlist_button.language.default];
+								break;
+						}
+						{% endif %}
+						return value
+					}
+					// This is the function you want to call whenever your form changes.
+					gift_reggie.wishlist_button.update_button = function(div, action = "basic") { 
+						{% if block.settings.gr_wishlist_use_image %}
+							div.querySelector(".add-wishlist").setAttribute("src", gift_reggie.wishlist_button.button_text(div, action));
+						{% else %}
+							div.querySelector(".add-wishlist").setAttribute("value",gift_reggie.wishlist_button.button_text(div, action));
+						{% endif %}
+					}
+					gift_reggie.wishlist_button.update_cart_attributes = function() {
+						var variantIdList = Object.keys(gift_reggie.wishlist_button.variant_ids).map(x=>+x);
+						GiftReggie.ajax({
+							url: '/cart/update.js', 
+							type: "POST", 
+							data: { 
+								attributes: {
+									'wishlist_variant_ids': variantIdList,
+									'wishlist_id': gift_reggie.wishlist_button.wishlist.id
+								}
+							},
+							contentType: 'json',
+							dataType: 'json'
+						});
+					}
+					gift_reggie.wishlist_button.publishButton = function(div) {
+						var form = div.querySelector(".gift-reggie-hook").form;
+						{% if section.settings.gr_append_to_form %}
+						if(!form){
+							form = document.querySelector("form[action*='/cart/add']");
+							form.appendChild(div.parentElement);
+						}
+						{% endif %}
+						if (form && /cart/.test(form.getAttribute('action'))) {
+							{% if block.settings.gr_wishlist_use_image %}
+								var button = gift_reggie.createElement("<img class='add-wishlist' src='" + gift_reggie.wishlist_button.button_text(div, "basic") + "'>");
+							{% else %}
+								var button = gift_reggie.createElement("<input type='button' class='add-wishlist {{ block.settings.gr_css_classes }}' value='" + gift_reggie.wishlist_button.button_text(div, "basic") + "'>");
+							{% endif %}
+							gift_reggie.update_button_state(form, div, button);
+							div.appendChild(button);
+							gift_reggie.used_buttons.wishlist.push({ div: div, form: form });
+							button.addEventListener("click", function(e) {
+								var id = gift_reggie.find_cart_id_in_form(form);
+								if (id) {
+									if (!gift_reggie.session) {
+                    if(!window.Shopify || !window.Shopify.designMode)
+                        window.location = "/apps/giftregistry/wishlist?id=" + id;
+                    else
+                        alert("This action was disabled because the theme customizer does not support it.")
+										return false;
+									}
+									gift_reggie.wishlist_button.update_button(div, "loading");
+									if (!gift_reggie.wishlist_button.wishlist) {
+										gift_reggie.session.openWishlist().done(function(data) {
+											gift_reggie.wishlist_button.wishlist.wishlist = data.wishlist;
+											gift_reggie.session.addWishlist(id).done(function() {
+												gift_reggie.wishlist_button.variant_ids[id] = 1;
+												gift_reggie.wishlist_button.update_button(div, "added");
+												setTimeout(function() {	gift_reggie.wishlist_button.update_button(div); }, 1000);
+												gift_reggie.wishlist_button.update_cart_attributes();
+											});
+										});
+									} else {
+										if (!gift_reggie.wishlist_button.variant_ids[id]) {
+											gift_reggie.session.addWishlist(id).done(function() {
+												gift_reggie.wishlist_button.variant_ids[id] = 1;
+												gift_reggie.wishlist_button.update_button(div, "added");
+												setTimeout(function() {	gift_reggie.wishlist_button.update_button(div); }, 1000);
+												gift_reggie.wishlist_button.update_cart_attributes();
+											});
+										} else {
+											gift_reggie.session.removeWishlist(id).done(function() {
+												delete gift_reggie.wishlist_button.variant_ids[id];
+												gift_reggie.wishlist_button.update_button(div, "removed");
+												setTimeout(function() {	gift_reggie.wishlist_button.update_button(div); }, 1000);
+												gift_reggie.wishlist_button.update_cart_attributes();
+											});
+										}
+									}
+								}
+								else {
+									alert("{{ block.settings.gr_add_failure_message }}");
+								}
+								return false;
+							});
+							gift_reggie.wishlist_button.update_button(div);
+						}
+						else {
+							console.log("Could not find add to cart form. Please remove or modify section to comply with your theme.");
+            }
+						form.querySelector("[name='id']").addEventListener('change', function(e) { gift_reggie.wishlist_button.update_button(div); });
+						return false;
+					};
+
+					window.addEventListener('DOMContentLoaded', function() {
+						if(!gift_reggie.is_first_load(gift_reggie.wishlist_button)) {
+							return;
+						}
+						gift_reggie.wishlist_button.wishlist = null;
+						gift_reggie.wishlist_button.variant_ids = {};
+						{% if customer %}
+							if(gift_reggie.session == null){
+								GiftReggie.getSession({{ customer.id }}, "{{ customer.email }}", "{{ customer.metafields['gift-reggie']['shared-secret'] }}").done(function(data) {
+									gift_reggie.session = data;
+									prepareWishlists();
+								});
+							}
+							else {
+								prepareWishlists();
+							}
+							function prepareWishlists() {
+								{% unless cart.attributes['wishlist_variant_ids'] %}
+									gift_reggie.session.getWishlist().done(function(data) {
+										var variantIdList = [];
+										if (data['wishlist']) {
+											gift_reggie.wishlist_button.wishlist = data.wishlist;
+											for (var i = 0; i < data.wishlist.products.length; ++i) {
+												variantIdList.push(data.wishlist.products[i].variant_id);
+												gift_reggie.wishlist_button.variant_ids[data.wishlist.products[i].variant_id] = 1;
+											}
+											gift_reggie.wishlist_button.update_cart_attributes();
+										}
+									});
+								{% else %}
+									var variantIdList = JSON.parse("{{ cart.attributes['wishlist_variant_ids'] }}");
+									for (var i = 0; i < variantIdList.length; ++i)
+										gift_reggie.wishlist_button.variant_ids[variantIdList[i]] = 1;
+									gift_reggie.wishlist_button.wishlist = { id: {{ cart.attributes['wishlist_id'] }} };
+								{% endunless %}
+							}
+						{% endif %}
+						document.querySelectorAll(".gift-reggie-wishlist-button").forEach(function(item, index) { gift_reggie.wishlist_button.publishButton(item); });
+					});
+				</script>
+				<style>
+					.gift-reggie-wishlist-button {
+						margin-top:{{ block.settings.gr_margin_top }}px;
+            margin-left:{{ block.settings.gr_margin_left }}px;
+						width:{% if section.settings.gr_button_layout == "side_by_side" %}{{ block.settings.gr_button_width | divided_by: 2 }}{% else %}{{ block.settings.gr_button_width }}{% endif %}%;
+					}
+					.gift-reggie-wishlist-button input,
+					.gift-reggie-wishlist-button img {
+						width:100%;
+            {% if section.settings.gr_overwrite_color %}
+              color: {{ section.settings.gr_button_color }};
+            {% endif %}
+            {% if section.settings.gr_overwrite_background %}
+              background-color: {{ section.settings.gr_background_color }};
+            {% endif %}
+						{{ block.settings.gr_css_style }}
+					}
+				</style>
+			{% endif %}
+		</div>
+	{% endcase %}
+{% endfor %}
+<style>
+	.gift-reggie-buttons {
+		display: flex;
+    width: 100%;
+		{% if section.settings.gr_button_layout == "stacked" %}
+			flex-direction: column;
+      align-items: {% if section.settings.gr_button_alignment == "center" %}center{% endif %};
+		{% elsif section.settings.gr_button_layout == "side_by_side" %}
+			flex-direction: row;
+      justify-content: {% if section.settings.gr_button_alignment == "justify" %}space-between{% else %}space-around{% endif %};
+		{% endif %}
+	}
+</style>
+{% endif %}
+
+{% schema %}
+{
+	"name": "Gift Reggie",
+	"max_blocks": 2,
+	"settings": [
+		{
+			 "type":      "paragraph",
+			 "content": 	"Settings with a * next to them require saving before appearing in the preview window"
+		},
+    {
+			"type":      "checkbox",
+			"id":        "gr_enable_buttons",
+			"label":     "Enable buttons*",
+			"default":   true
+		},
+    {
+			"type":      "checkbox",
+			"id":        "gr_custom_buttons",
+			"label":     "Custom Button Placement*",
+			"default":   false,
+      "info":      "This will omit the buttons automatically included in the section on the page. For more information about custom button placement view our setup guide."
+		},
+		{
+			"type":      "checkbox",
+			"id":        "gr_append_to_form",
+			"label":     "Find cart form automatically*",
+			"default":   true,
+      "info":      "If the placement of the button code is not already inside an add to cart form we will move them to one on the page if it exists."
+		},
+		{
+			"type": "select",
+			"id": "gr_button_layout",
+			"options": [
+				{ "value": "stacked", "label": "Stacked"},
+				{ "value": "side_by_side", "label": "Side by side"}
+			],
+			"label": "Button layout"
+		},
+    {
+      "type": "select",
+      "id": "gr_button_alignment",
+      "options": [
+        { "value": "justify", "label": "Justified"},
+        { "value": "center", "label": "Centered"}
+      ],
+      "label": "Button alignment"
+    },
+		{
+			"type": "select",
+			"id": "gr_no_id",
+			"options": [
+				{ "value": "disable", "label": "Disable"},
+				{ "value": "hide", "label": "Hide"}
+			],
+			"label": "No Variant Behavior*",
+			"info": "Button behavior when no variant can be found in the add to cart form."
+		},
+    {
+      "type":      "checkbox",
+      "id":        "gr_overwrite_color",
+      "label":     "Overwrite Button Text Color",
+      "default":   false
+    },
+		{
+			"type": "color",
+			"id": "gr_button_color",
+			"label": "Button text color",
+			"default": "#ffffff"
+		},
+    {
+      "type":      "checkbox",
+      "id":        "gr_overwrite_background",
+      "label":     "Overwrite Button Background Color",
+      "default":   false
+    },
+    {
+      "type": "color",
+      "id": "gr_background_color",
+      "label": "Button background color",
+      "default": "#111111"
+    },
+		{
+			"type": "paragraph",
+			"content": "Thanks for using Gift Reggie!  For help with any of these settings reach out to us at help@moddapps.com."
+		}
+	],
+	"blocks": [
+		{
+			"type":			"registry",
+			"name":			"Registry Button",
+			"limit":		1,
+			"settings": [
+				{
+					 "type":      "header",
+					 "content": 	"General Settings",
+					 "info":      "Settings with a * next to them require saving before appearing in the preview window"
+				},
+				{
+					"type":      "checkbox",
+					"id":        "gr_invisible",
+					"label":     "Only visible to managers*",
+					"default":   false,
+					"info":				"Only customer actively editing a registry will see the button"
+				},
+				{
+					"type":      "checkbox",
+					"id":        "gr_not_ajax",
+					"label":     "Redirect to registry?*",
+					"default":   false,
+					"info":				"Customers are redirected to the registry after adding an item"
+				},
+				{
+					"type":      "textarea",
+					"id":        "gr_add_failure_message",
+					"label":			"Add to registry failure message",
+					"default":   "Could not add item to registry. Please contact shop with the product you were trying to add."
+				},
+				{
+					"type":      "range",
+					"id":        "gr_button_width",
+					"min":       1,
+					"max":       100,
+					"step":      1,
+					"unit":      "%",
+					"label":     "Button width",
+					"default":   100
+				},
+        {
+					"type":      "range",
+					"id":        "gr_margin_top",
+					"min":       -100,
+					"max":       100,
+					"step":      2,
+					"unit":      "px",
+					"label":     "Margin above button",
+					"default":   10
+				},
+        {
+					"type":      "range",
+					"id":        "gr_margin_left",
+					"min":       -100,
+					"max":       100,
+					"step":      2,
+					"unit":      "px",
+					"label":     "Margin left of button",
+					"default":   0
+				},
+				{
+				   "type":      "header",
+					 "content": 	"Developer Settings",
+				   "info":      "These settings require some technical knowledge and may overwrite section settings"
+				},
+				{
+					"type":      		"text",
+					"id":        		"gr_css_classes",
+					"label":     		"Button CSS classes*",
+					"default":   		"btn",
+					"placeholder":	"btn cart-action"
+				},
+				{
+					"type":      		"textarea",
+					"id":        		"gr_css_style",
+					"label":     		"Button CSS styles",
+					"placeholder":	"font-size: 12px;\nmargin-left: 10px;"
+				}
+			]
+		},
+		{
+			"type":			"wishlist",
+			"name":			"Wishlist Button",
+			"limit":		1,
+			"settings": [
+				{
+					 "type":      "header",
+					 "content": 	"General Settings",
+					 "info":      "Most settings require saving to take effect in the preview window."
+				},
+				{
+					"type":      "checkbox",
+					"id":        "gr_invisible",
+					"label":     "Only visible to managers*",
+					"default":   false,
+					"info":				"Only customer actively editing a wishlist will see the button"
+				},
+				{
+					"type":      "textarea",
+					"id":        "gr_add_failure_message",
+					"label":			"Add to wishlist failure message",
+					"default":   "Could not add item to wishlist. Please contact shop with the product you were trying to add."
+				},
+				{
+					"type":      "range",
+					"id":        "gr_button_width",
+					"min":       1,
+					"max":       100,
+					"step":      1,
+					"unit":      "%",
+					"label":     "Button width",
+					"default":   100
+				},
+        {
+					"type":      "range",
+					"id":        "gr_margin_top",
+					"min":       -100,
+					"max":       100,
+					"step":      2,
+					"unit":      "px",
+					"label":     "Margin above button",
+					"default":   10
+				},
+        {
+					"type":      "range",
+					"id":        "gr_margin_left",
+					"min":       -100,
+					"max":       100,
+					"step":      2,
+					"unit":      "px",
+					"label":     "Margin left of button",
+					"default":   0
+				},
+				{
+					"type":      "checkbox",
+					"id":        "gr_wishlist_use_image",
+					"label":     "Use images instead of button*",
+					"default":   false
+				},
+				{
+					"type":      "image_picker",
+					"id":        "gr_wishlist_image_off",
+					"label":     "Choose unselected image*"
+				},
+				{
+					"type":      "image_picker",
+					"id":        "gr_wishlist_image_on",
+					"label":     "Choose selected image*"
+				},
+				{
+					 "type":      "header",
+					 "content": 	"Developer Settings",
+					 "info":      "These settings require some technical knowledge and may overwrite section settings"
+				},
+				{
+					"type":      		"text",
+					"id":        		"gr_css_classes",
+					"label":     		"Button CSS classes*",
+					"default":   		"btn",
+					"placeholder":	"btn cart-action"
+				},
+				{
+					"type":      		"textarea",
+					"id":        		"gr_css_style",
+					"label":     		"Button CSS Styles",
+					"placeholder":	"font-size: 12px;\nmargin-left: 10px;"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

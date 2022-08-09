@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": true,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "1629409032b9f0a02a": {
+      "type": "collection-list",
+      "disabled": true,
+      "blocks": {
+        "1629409032b9f0a02a-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "0-6m"
+          }
+        },
+        "1629409032b9f0a02a-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "6-12m"
+          }
+        },
+        "1629409032b9f0a02a-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "12-24m"
+          }
+        },
+        "7bca51e2-7190-471d-957d-0780bcfa648a": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "2-4y"
+          }
+        },
+        "c3f52b33-125d-4125-abd2-42a558b640b4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "6-4y"
+          }
+        },
+        "09a3084c-7930-47a6-a90f-75eff44f78db": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "6-8y"
+          }
+        }
+      },
+      "block_order": [
+        "1629409032b9f0a02a-0",
+        "1629409032b9f0a02a-1",
+        "1629409032b9f0a02a-2",
+        "7bca51e2-7190-471d-957d-0780bcfa648a",
+        "c3f52b33-125d-4125-abd2-42a558b640b4",
+        "09a3084c-7930-47a6-a90f-75eff44f78db"
+      ],
+      "settings": {
+        "title": "Shop by Age",
+        "image_ratio": "square",
+        "color_scheme": "inverse",
+        "swipe_on_mobile": false,
+        "image_padding": true,
+        "show_view_all": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "1629409032b9f0a02a"
+  ]
+}

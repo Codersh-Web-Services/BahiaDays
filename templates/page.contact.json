@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "162732188099bf3acb": {
+      "type": "rich-text",
+      "blocks": {
+        "162732188099bf3acb-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hello, Bahia Days?",
+            "heading_size": "medium"
+          }
+        },
+        "162732188099bf3acb-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You've got some questions and we've got some answers. Ask us about an order, a product, styling tips for your little one... really anything we can help with! We'd love to hear from you.<\/p><p><\/p><p>Want to shoot us an email instead, reach us at <a href=\"mailto:info@bahiadays.com\" target=\"_blank\"><strong>info@bahiadays.com<\/strong><\/a> or check out our <a href=\"\/pages\/faq\" title=\"FAQ\"><strong>FAQ section<\/strong><\/a> -the answers you need may be there already!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "162732188099bf3acb-0",
+        "162732188099bf3acb-1"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": true
+      }
+    },
+    "16297414741c231d65": {
+      "type": "contact-form",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "162732188099bf3acb",
+    "16297414741c231d65"
+  ]
+}

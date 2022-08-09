@@ -1,0 +1,90 @@
+<button id='giftreggie-checkout' name="checkout" class="btn giftreggie-checkout" value="Checkout">Checkout</button>
+
+{% if cart.attributes['registry_id'] %}
+{% unless checkout_already_present %}
+<script type='text/javascript'>{
+	var getCookieFunction = function(c_name) {
+		var c_value = document.cookie;
+		var c_start = c_value.indexOf(" " + c_name + "=");
+		if (c_start == -1)
+			c_start = c_value.indexOf(c_name + "=");
+		if (c_start == -1)
+			return null;
+		c_start = c_value.indexOf("=", c_start) + 1;
+		var c_end = c_value.indexOf(";", c_start);
+		if (c_end == -1)
+			c_end = c_value.length;
+		return unescape(c_value.substring(c_start,c_end));
+	};
+
+	(function( $ ) {
+		$('.giftreggie-checkout').click(function() {
+			var checkout_button = $(this);
+			var cart_token = getCookieFunction("cart");
+			if (cart_token) {
+				var registry_shipping = getCookieFunction("giftreggie-address");
+				if (registry_shipping) {
+					registry_shipping = JSON.parse(registry_shipping);
+					var provinceMapping = {"ON":"Ontario","ME":"Maine","TX":"Texas","MB":"Manitoba","CO":"Colorado","NS":"Nova Scotia","OK":"Oklahoma","SD":"South Dakota","IA":"Iowa","NB":"New Brunswick","NC":"North Carolina","WV":"West Virginia","TN":"Tennessee","NE":"Nebraska","MN":"Minnesota","LA":"Lousiana","ND":"North Dakota","SC":"South Carolina","QC":"Quebec","CA":"California","OR":"Oregon","AR":"Arkansas","AL":"Alabama","VA":"Virginia","DC":"District of Columbia","WY":"Wyoming","MT":"Montana","KS":"Kansa","BC":"British Columbia","IL":"Illinois","AZ":"Arizona","NV":"Nevada","AK":"Alaska","MD":"Maryland","WA":"Washington","GA":"Georgia","CT":"Connecticut","WI":"Wisconsin","FL":"Florida","MS":"Mississippi","NT":"Nunavut","RI":"Rhode Island","KY":"Kentucky","NL":"Newfoundland and Labrador","AB":"Alberta","UT":"Utah","PA":"Pennsylvania","ID":"Idaho","MI":"Michigan","PE":"Prince Edward Island","VT":"Vermont","NM":"New Mexico","DE":"Delaware","NH":"New Hampshire","MA":"Massachusetts","NJ":"New Jersey","OH":"Ohio","NY":"New York","YT":"Yukon","MO":"Missouri","HI":"Hawaii","IN":"Indiana"};
+					var countryMapping = {"EE":"Estonia","IQ":"Iraq","BY":"Belarus","SA":"Saudi Arabia","GT":"Guatemala","CX":"Christmas Island","NZ":"New Zealand","GP":"Guadeloupe","TN":"Tunisia","BG":"Bulgaria","IT":"Italy","CD":"Congo, The Democratic Republic of the","AI":"Anguilla","UY":"Uruguay","SJ":"Svalbard and Jan Mayen","CC":"Cocos (Keeling) Islands","YE":"Yemen","BF":"Burkina Faso","AO":"Angola","JE":"Jersey","GN":"Guinea","SH":"Saint Helena","GB":"United Kingdom","ES":"Spain","ID":"Indonesia","PA":"Panama","LK":"Sri Lanka","TV":"Tuvalu","PL":"Poland","FJ":"Fiji","TR":"Turkey","CK":"Cook Islands","KE":"Kenya","MT":"Malta","NL":"Netherlands","MK":"Macedonia, The Former Yugoslav Republic of","BS":"Bahamas","SE":"Sweden","FM":"Micronesia, Federated States of","CG":"Congo","BH":"Bahrain","UZ":"Uzbekistan","CU":"Cuba","AD":"AndorrA","LR":"Liberia","BT":"Bhutan","PN":"Pitcairn","GY":"Guyana","LV":"Latvia","RO":"Romania","MG":"Madagascar","QA":"Qatar","VN":"Viet Nam","HR":"Croatia","ST":"Sao Tome and Principe","CM":"Cameroon","SB":"Solomon Islands","IS":"Iceland","BB":"Barbados","PF":"French Polynesia","GL":"Greenland","GU":"Guam","CL":"Chile","KN":"Saint Kitts and Nevis","UG":"Uganda","IO":"British Indian Ocean Territory","BO":"Bolivia","BE":"Belgium","BV":"Bouvet Island","IE":"Ireland","NU":"Niue","US":"United States","GQ":"Equatorial Guinea","UA":"Ukraine","FO":"Faroe Islands","SR":"Suri'name'","SD":"Sudan","KI":"Kiribati","OM":"Oman","KW":"Kuwait","ZW":"Zimbabwe","KG":"Kyrgyzstan","SC":"Seychelles","AL":"Albania","NE":"Niger","CR":"Costa Rica","AQ":"Antarctica","NP":"Nepal","SM":"San Marino","LA":"Lao People's Democratic Republic","PG":"Papua New Guinea","TZ":"Tanzania, United Republic of","PM":"Saint Pierre and Miquelon","MZ":"Mozambique","EC":"Ecuador","HT":"Haiti","GA":"Gabon","AN":"Netherlands Antilles","CO":"Colombia","CV":"Cape Verde","SG":"Singapore","LY":"Libyan Arab Jamahiriya","GE":"Georgia","TM":"Turkmenistan","LT":"Lithuania","BR":"Brazil","MU":"Mauritius","TH":"Thailand","SZ":"Swaziland","MP":"Northern Mariana Islands","IL":"Israel","VU":"Vanuatu","LI":"Liechtenstein","TJ":"Tajikistan","MS":"Montserrat","RE":"Reunion","SL":"Sierra Leone","MY":"Malaysia","NG":"Nigeria","LC":"Saint Lucia","CI":"Cote D\"Ivoire","NF":"Norfolk Island","GI":"Gibraltar","ER":"Eritrea","DM":"Dominica","CZ":"Czech Republic","ZM":"Zambia","BM":"Bermuda","AG":"Antigua and Barbuda","UM":"United States Minor Outlying Islands","KM":"Comoros","KP":"Korea, Democratic People's Republic of","PS":"Palestinian Territory, Occupied","JO":"Jordan","SK":"Slovakia","TT":"Trinidad and Tobago","PE":"Peru","TW":"Taiwan, Province of China","NO":"Norway","AW":"Aruba","PW":"Palau","GF":"French Guiana","TC":"Turks and Caicos Islands","WF":"Wallis and Futuna","AZ":"Azerbaijan","JM":"Jamaica","PH":"Philippines","SN":"Senegal","MV":"Maldives","MX":"Mexico","VI":"Virgin Islands, U.S.","GW":"Guinea-Bissau","MC":"Monaco","CF":"Central African Republic","VA":"Holy See (Vatican City State)","CH":"Switzerland","AR":"Argentina","FK":"Falkland Islands (Malvinas)","AS":"American Samoa","MQ":"Martinique","IN":"India","MM":"Myanmar","BA":"Bosnia and Herzegovina","BD":"Bangladesh","IR":"Iran, Islamic Republic Of","MN":"Mongolia","CA":"Canada","AT":"Austria","TL":"Timor-Leste","GM":"Gambia","PY":"Paraguay","MR":"Mauritania","BI":"Burundi","GD":"Grenada","DK":"Denmark","ML":"Mali","ET":"Ethiopia","EG":"Egypt","GS":"South Georgia and the South Sandwich Islands","GG":"Guernsey","MW":"Malawi","WS":"Samoa","AF":"Afghanistan","NR":"Nauru","HM":"Heard Island and Mcdonald Islands","AX":"Aland Islands","LS":"Lesotho","KY":"Cayman Islands","KZ":"Kazakhstan","HU":"Hungary","MH":"Marshall Islands","GR":"Greece","TO":"Tonga","KR":"Korea, Republic of","AU":"Australia","SI":"Slovenia","CN":"China","MO":"Macao","KH":"Cambodia","PR":"Puerto Rico","TG":"Togo","YT":"Mayotte","IM":"Isle of Man","BZ":"Belize","VG":"Virgin Islands, British","FR":"France","NC":"New Caledonia","SO":"Somalia","MD":"Moldova, Republic of","MA":"Morocco","TF":"French Southern Territories","BN":"Brunei Darussalam","FI":"Finland","LU":"Luxembourg","PK":"Pakistan","HN":"Honduras","RW":"RWANDA","NA":"Namibia","DO":"Dominican Republic","EH":"Western Sahara","DE":"Germany","SV":"El Salvador","VC":"Saint Vincent and the Grenadines","CS":"Serbia and Montenegro","PT":"Portugal","HK":"Hong Kong","TD":"Chad","SY":"Syrian Arab Republic","GH":"Ghana","BW":"Botswana","BJ":"Benin","JP":"Japan","CY":"Cyprus","ZA":"South Africa","DJ":"Djibouti","DZ":"Algeria","LB":"Lebanon","TK":"Tokelau","AE":"United Arab Emirates","NI":"Nicaragua","AM":"Armenia","VE":"Venezuela","RU":"Russian Federation", "USA":"United States"};
+					var fields = {
+						{% if customer %}
+							'order[email]': {{ customer.email | json }},
+							{% if customer.default_address %}
+								'billing_address[first_name]': {{ customer.default_address.first_name | json }},
+								'billing_address[last_name]': {{ customer.default_address.last_name | json }},
+								'billing_address[company]': {{ customer.default_address.company | json }},
+								'billing_address[address1]': {{ customer.default_address.address1 | json }},
+								'billing_address[address2]': {{ customer.default_address.address2 | json }},
+								'billing_address[city]': {{ customer.default_address.city | json }},
+								'billing_address[zip]': {{ customer.default_address.zip | json }},
+								'billing_address[country]': {{ customer.default_address.country | json }},
+								'billing_address[province]': {{ customer.default_address.province | json }},
+								'billing_address[phone]': {{ customer.default_address.phone | json }},
+							{% endif %}
+						{% endif %}
+						'shipping_address[first_name]': registry_shipping.first_name,
+						'shipping_address[last_name]': registry_shipping.last_name,
+						'shipping_address[company]': registry_shipping.company,
+						'shipping_address[address1]': registry_shipping.address1,
+						'shipping_address[address2]': (registry_shipping.address2 ? registry_shipping.address2 : ''),
+						'shipping_address[city]': registry_shipping.city,
+						'shipping_address[zip]': registry_shipping.zip,
+						'shipping_address[country]': (countryMapping[registry_shipping.country] ? countryMapping[registry_shipping.country] : registry_shipping.country),
+						'shipping_address[province]': (provinceMapping[registry_shipping.province] ? provinceMapping[registry_shipping.province] : registry_shipping.province),
+						'shipping_address[phone]': registry_shipping.phone
+					};
+					var queryString = [];
+					
+					
+					
+					
+					// This is for the new repsonsive checkout, which has been forced on all shops (with certain exceptions) on April 13th, 2015.
+					for (var i in fields) {
+						if (fields.hasOwnProperty(i)) {
+							queryString.push(i.replace("shipping_address", "checkout[shipping_address]").replace("billing_address", "checkout[billing_address]") + "=" + encodeURIComponent(fields[i]));
+						}
+					}
+					
+					var attribute_hash = {};
+					checkout_button.parents("form").find("input").each(function() {
+						var groups = /attributes\[([^\]]+)\]/.exec($(this).attr('name'));
+						if (groups && groups.length > 1) {
+							attribute_hash[groups[1]] = $(this).val();
+						}
+					});
+					checkout_button.prop('disabled', true);
+					$.ajax({ url: "/cart/update.js", type: "POST", dataType: "json", data: { attributes: attribute_hash } }).done(function() {
+						window.location = "/checkout?" + queryString.join("&");
+					}).always(function() {
+						checkout_button.prop('disabled', false);
+					});
+					return false;
+				}
+			}
+		});
+	})(jQuery);
+}</script>
+{% assign checkout_already_present = 1 %}
+{% endunless %}
+{% endif %}

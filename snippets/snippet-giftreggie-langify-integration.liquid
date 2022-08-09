@@ -1,0 +1,19 @@
+<script type='text/javascript'>
+(function($) {
+	$(document).ready(function() {
+		var currentLanguage = {% if request.locale and request.locale.iso_code %}"{{ request.locale.iso_code }}"{% else %}"{{ shop.metafields.language_codes[cart.attributes['language']] }}"{% endif %};
+		if (currentLanguage && currentLanguage != "") {
+			$('a').each(function() {
+				var href = $(this).attr('href');
+				if (href && href.indexOf("/apps/giftregistry") != -1 && href.indexOf("lang=") == -1) {
+					if (href.indexOf("?") == -1) {
+						$(this).attr('href', href + "?lang=" + encodeURIComponent(currentLanguage));
+					} else {
+						$(this).attr('href', href + "&lang=" + encodeURIComponent(currentLanguage));
+					}
+				}
+			});
+		}
+	});
+})(jQuery);
+</script>

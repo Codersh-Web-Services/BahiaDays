@@ -1,0 +1,126 @@
+{
+  "current": {
+    "colors_accent_1": "#5a838f",
+    "colors_accent_2": "#d9baa0",
+    "colors_text": "#2b3f45",
+    "colors_outline_button_labels": "#2b3f45",
+    "colors_background_1": "#f2ede7",
+    "colors_background_2": "#e8dccc",
+    "sold_out_badge_color_scheme": "inverse",
+    "share_facebook": false,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "social_facebook_link": "https:\/\/www.facebook.com\/bahiadays",
+    "social_pinterest_link": "https:\/\/www.pinterest.com\/bahiadays\/_saved\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/bahiadays\/",
+    "social_tiktok_link": "https:\/\/www.tiktok.com\/@bahiadays?is_copy_url=1&is_from_webapp=v1&lang=en",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Bahia_Days_Logos-19.png",
+    "checkout_body_background_color": "#f2ede7",
+    "checkout_input_background_color_mode": "transparent",
+    "checkout_sidebar_background_color": "#e8dccc",
+    "checkout_accent_color": "#5a838f",
+    "checkout_button_color": "#2b3f45",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Free ground shipping on orders $75+ |  No code necessary",
+              "color_scheme": "accent-2",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Bahia_Days_Logos-19.png",
+          "logo_width": 210,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "show_line_separator": false,
+          "enable_sticky_header": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0"
+        ],
+        "settings": {
+          "footer_linklist": "footer",
+          "footer_linklist-mobile": "footer-mobile-left",
+          "footer_linklist-mobile2": "footer-mobile-right",
+          "instagram": "https:\/\/www.instagram.com\/bahiadays\/",
+          "pinterest": "https:\/\/www.pinterest.com\/bahiadays\/_saved\/",
+          "facebook": "https:\/\/www.facebook.com\/bahiadays",
+          "color_scheme": "background-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Sign up to our emails",
+          "show_social": false,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": true
+        }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Bahia_Days_Logos-20.png",
+          "logo_max_width": 210,
+          "color_scheme": "accent-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-2"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "6544724514127332554": {
+        "type": "shopify:\/\/apps\/go-gift-cards\/blocks\/app-embed\/3676fc08-8fa0-4857-baf6-8c6e28f899dc",
+        "disabled": false,
+        "settings": {
+          "text_color": "#4C4B4B",
+          "background_color": "#FFFFFF",
+          "button_primary_text_color": "#4C4B4B",
+          "button_primary_background_color": "#E4DDDD",
+          "button_primary_border_color": "#E4DDDD",
+          "button_primary_text_hover_color": "#4C4B4B",
+          "button_primary_background_hover_color": "#CAC6C6",
+          "button_primary_border_hover_color": "#CAC6C6",
+          "button_secondary_text_color": "#4C4B4B",
+          "button_secondary_background_color": "#FFFFFF",
+          "button_secondary_border_color": "#E4DDDD",
+          "button_secondary_text_hover_color": "#4C4B4B",
+          "button_secondary_background_hover_color": "#4C4B4B",
+          "button_secondary_border_hover_color": "#4C4B4B",
+          "highlight_text_color": "#FFFFFF",
+          "highlight_background_color": "#4C4B4B",
+          "show_powered_by_logo": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+ <!-- section 11 start here -->
+    <div class="section11">
+      <div class="container">
+        <div class="head_text">
+          <h3 class="h3whitecenter">{{section.settings.subhead}}</h3>
+<!--           <form>
+            <input type="email" >
+            <button type="submit" class="btn btn_pink">Subscribe</button>
+          </form> -->
+          <form class="sub-form" method="post" action="/contact#ContactFooter" accept-charset="UTF-8"  novalidate="novalidate"><input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓">
+   <input type="email" name="contact[email]"  value=""  aria-label="Email address" aria-required="true" required="" autocorrect="off" autocapitalize="off">
+   <button  type="submit"  name="commit" class="btn btn_pink">Subscribe</button>
+</form>
+        </div>
+      </div>
+    </div>
+    <!-- section 11 end here -->
+
+              
+{% schema %}
+  {
+    "name": "Subscribe section",
+    "settings": [
+	{
+	"type": "textarea",
+	"id": "subhead",
+	"label" : "subscription heading"
+	}
+],
+	 "presets" : [
+	{ 
+	"name" : "Subscribe Section",
+	"category" : "homepage"
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

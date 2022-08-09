@@ -1,0 +1,333 @@
+{
+  "sections": {
+    "1627468530f5273991": {
+      "type": "hero-section",
+      "settings": {
+        "subtitle": "A Modern-Day",
+        "title": "<span class=\"heroh1\">Boutique<br>for Boys<\/span>",
+        "subhead": "Clothes, accessories, and room décor in <br> playful, cozy, and simple styles",
+        "hero": "shopify:\/\/shop_images\/FD118124-A044-4453-9828-5DF478494A19.jpg",
+        "banner1": "shopify:\/\/shop_images\/FD118124-A044-4453-9828-5DF478494A19.jpg",
+        "banner2": "shopify:\/\/shop_images\/Hero_Image_Bahia_Days_Xander.jpg",
+        "button": "Let’s Shop!",
+        "button_link": "shopify:\/\/collections\/all"
+      }
+    },
+    "16274685608b2f2e00": {
+      "type": "introduction",
+      "settings": {
+        "intro": "<span class=\"h3whitecenter\">Hey, mom! Like you, we were frustrated with the limited selection and lack of options when we went shopping for our cute boys.<\/span>",
+        "moretext": "Bahia Days was designed specifically for boys (and boy moms!). All the playful, cozy, high-quality clothes, accessories, and décor – in your new favorite one-stop-shop.",
+        "icon": "shopify:\/\/shop_images\/icon.png"
+      }
+    },
+    "1629920507220752f6": {
+      "type": "image-banner",
+      "blocks": {
+        "1629920507220752f6-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gifts & More"
+          }
+        },
+        "1629920507220752f6-1": {
+          "type": "text",
+          "settings": {
+            "text": "Find the perfect gifts for the little boy in your life."
+          }
+        },
+        "1629920507220752f6-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Gifts",
+            "button_link_1": "shopify:\/\/collections\/gifts-trending",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "1629920507220752f6-0",
+        "1629920507220752f6-1",
+        "1629920507220752f6-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Jungle_Animals_Lacing_Cards.jpg",
+        "image_2": "shopify:\/\/shop_images\/The_Little_Homie_Crew.png",
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "16274685925f0d2e3e": {
+      "type": "featured",
+      "settings": {
+        "title": "<span class=\"h3whitecenter\">Our Featured Items<\/span>",
+        "subtitle": "These cosy items are a must have for every little boy.",
+        "number": 4,
+        "collection": "must-haves"
+      }
+    },
+    "1627468601cd10afcf": {
+      "type": "Boutique-for-Boys",
+      "settings": {
+        "title": "<span class=\"h2homepage\">A Boutique <br>for Boys<\/span>",
+        "subtitle": "The Bahia Days Story",
+        "content": "Bahia Days combines a minimalist aesthetic with the comfort and freedom boys need to play, explore, run, and grow.",
+        "button": "Read More of Our Story",
+        "button_link": "shopify:\/\/pages\/about",
+        "leftimage": "shopify:\/\/shop_images\/Bahia_Days_Home_Page_About_Image.jpg",
+        "icon": "shopify:\/\/shop_images\/sec4_icon_39b059e7-42c0-4b20-94e7-165aa3cb065b.png"
+      }
+    },
+    "1627468608fdc24a47": {
+      "type": "shop-by-section",
+      "blocks": {
+        "1154c806-1f16-4f2b-b2ab-88f6fd9ecf68": {
+          "type": "all",
+          "settings": {
+            "age": "0-6 M",
+            "collection": "0-6-m"
+          }
+        },
+        "1a1a1aa2-8e1b-4dcd-a2f2-f41c02d684c2": {
+          "type": "all",
+          "settings": {
+            "age": "6-12 M",
+            "collection": "6-12-m"
+          }
+        },
+        "8a611bc5-8815-4dee-8eea-d9638e8aa0e4": {
+          "type": "all",
+          "settings": {
+            "age": "12-24 M",
+            "collection": "12-24-m"
+          }
+        },
+        "e79c32be-6824-4817-8f9e-3c1ec1bdbd41": {
+          "type": "all",
+          "settings": {
+            "age": "2-4 Y",
+            "collection": "2-4-y"
+          }
+        },
+        "fb89f5be-ab50-4c76-8d1f-5d49454f1a03": {
+          "type": "all",
+          "settings": {
+            "age": "4-6 Y",
+            "collection": "4-6-y"
+          }
+        },
+        "d89c2c23-80e8-4cc6-9873-3732c65c4672": {
+          "type": "all",
+          "settings": {
+            "age": "6-8 Y",
+            "collection": "6-8-y"
+          }
+        }
+      },
+      "block_order": [
+        "1154c806-1f16-4f2b-b2ab-88f6fd9ecf68",
+        "1a1a1aa2-8e1b-4dcd-a2f2-f41c02d684c2",
+        "8a611bc5-8815-4dee-8eea-d9638e8aa0e4",
+        "e79c32be-6824-4817-8f9e-3c1ec1bdbd41",
+        "fb89f5be-ab50-4c76-8d1f-5d49454f1a03",
+        "d89c2c23-80e8-4cc6-9873-3732c65c4672"
+      ],
+      "settings": {
+        "head": "Shop by Age"
+      }
+    },
+    "163411968612b558d7": {
+      "type": "multicolumn",
+      "blocks": {
+        "163411968612b558d7-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rainbow_Teethers_Neutral.jpg",
+            "title": "",
+            "text": "<p><a href=\"https:\/\/bahiadays.com\/apps\/giftregistry\/find\" title=\"https:\/\/bahiadays.com\/apps\/giftregistry\/find\">Find a Registry<\/a><\/p>"
+          }
+        },
+        "163411968612b558d7-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Veggie_Numbers_Playmat.jpg",
+            "title": "",
+            "text": "<p><a href=\"https:\/\/bahiadays.com\/apps\/giftregistry\/signup\" title=\"https:\/\/bahiadays.com\/apps\/giftregistry\/signup\">Create a Registry<\/a><\/p>"
+          }
+        },
+        "d0d59afe-1a63-4ea4-ac0f-6cb1ad71748a": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Suction_Bowl_Cloud.jpg",
+            "title": "",
+            "text": "<p><a href=\"https:\/\/bahiadays.com\/account\/login?checkout_url=%2Fapps%2Fgiftregistry%2Fmanage%3Flang%3D\" title=\"https:\/\/bahiadays.com\/account\/login?checkout_url=%2Fapps%2Fgiftregistry%2Fmanage%3Flang%3D\">Manage an Existing Registry<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "163411968612b558d7-0",
+        "163411968612b558d7-1",
+        "d0d59afe-1a63-4ea4-ac0f-6cb1ad71748a"
+      ],
+      "settings": {
+        "title": "",
+        "image_width": "half",
+        "image_ratio": "circle",
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false
+      }
+    },
+    "162746861726db4781": {
+      "type": "boy-apparels",
+      "settings": {
+        "content": "<span class=\"h3whitecenter\">High-quality, adorable options for boys of all backgrounds – because every boy deserves to look good and play hard.<\/span>"
+      }
+    },
+    "1627468642f941b024": {
+      "type": "shop-collection",
+      "blocks": {
+        "33e97b8f-7001-42f0-be6d-cb656e6d6b46": {
+          "type": "all",
+          "settings": {
+            "collection": "seasonal-trending"
+          }
+        },
+        "dbc3fa6c-c00a-455b-8dc9-d05e825c07bd": {
+          "type": "all",
+          "settings": {
+            "collection": "home"
+          }
+        },
+        "5168904f-a2d6-46f5-8a21-475d95d3ac13": {
+          "type": "all",
+          "settings": {
+            "collection": "sale"
+          }
+        },
+        "240279b7-2d0d-4df6-aae9-634e829014c1": {
+          "type": "all",
+          "settings": {
+            "collection": "best-selling-products"
+          }
+        }
+      },
+      "block_order": [
+        "33e97b8f-7001-42f0-be6d-cb656e6d6b46",
+        "dbc3fa6c-c00a-455b-8dc9-d05e825c07bd",
+        "5168904f-a2d6-46f5-8a21-475d95d3ac13",
+        "240279b7-2d0d-4df6-aae9-634e829014c1"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "1627468735fb209b3e": {
+      "type": "blog-homepage",
+      "settings": {
+        "bloghead": "On the Bahia Blog",
+        "blogsub": "Parenting Tips, Kid-Friendly Activities, <br>+ So Much More",
+        "blog": "featured",
+        "limit": 1
+      }
+    },
+    "16274687594deebc5a": {
+      "type": "instagram",
+      "blocks": {
+        "3a5986f1-3579-4832-9c54-86150733f7ef": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sec9_box_img.png"
+          }
+        },
+        "ddace697-1b9c-448a-a2a0-6d1bf2181f3c": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/box3_5c8cd8c5-0e5b-4201-837a-8978b8aae417.png"
+          }
+        },
+        "395b2223-7be0-49bf-93f0-dca7827289ed": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sec9_box_img.png"
+          }
+        },
+        "f75dfdc8-5da5-426f-825d-b71456a78032": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/shop_box3.png"
+          }
+        },
+        "700657b8-67e8-4a93-ba1e-9f437cc3a70f": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sec9_box_img.png"
+          }
+        }
+      },
+      "block_order": [
+        "3a5986f1-3579-4832-9c54-86150733f7ef",
+        "ddace697-1b9c-448a-a2a0-6d1bf2181f3c",
+        "395b2223-7be0-49bf-93f0-dca7827289ed",
+        "f75dfdc8-5da5-426f-825d-b71456a78032",
+        "700657b8-67e8-4a93-ba1e-9f437cc3a70f"
+      ],
+      "settings": {
+        "ighead": "Check out the fun on our Instagram"
+      }
+    },
+    "163411163444bc1919": {
+      "type": "instafeed",
+      "settings": {
+        "heading_font": "helvetica_n4",
+        "heading_size": 20,
+        "feed_width": 100,
+        "html_area": ""
+      }
+    },
+    "1627468793c070d9e6": {
+      "type": "shop-now-section",
+      "settings": {
+        "leftimage": "shopify:\/\/shop_images\/Madison_Hooded_Pullover_Updated.jpg",
+        "cozyhead": "Playful, Cozy and Sustainably Sourced Clothes Boys (and Boy Moms) Love!",
+        "cozybutton": "Shop Now",
+        "cozyurl": "shopify:\/\/collections\/all",
+        "rightimage": "shopify:\/\/shop_images\/astro_jammies_compressed.jpg"
+      }
+    },
+    "162746877372aa59d5": {
+      "type": "subscribe",
+      "settings": {
+        "subhead": "Subscribe to our newsletter for tips, articles, & sales"
+      }
+    }
+  },
+  "order": [
+    "1627468530f5273991",
+    "16274685608b2f2e00",
+    "1629920507220752f6",
+    "16274685925f0d2e3e",
+    "1627468601cd10afcf",
+    "1627468608fdc24a47",
+    "163411968612b558d7",
+    "162746861726db4781",
+    "1627468642f941b024",
+    "1627468735fb209b3e",
+    "16274687594deebc5a",
+    "163411163444bc1919",
+    "1627468793c070d9e6",
+    "162746877372aa59d5"
+  ]
+}

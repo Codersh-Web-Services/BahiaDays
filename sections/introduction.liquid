@@ -1,0 +1,49 @@
+ <!-- section 2 start here -->
+    <div class="section2">
+      <div class="container">
+        <div class="sec2_text">
+          <h3>{{section.settings.intro}} </h3>
+          <div class="font_14">
+            <p>{{section.settings.moretext}}</p>
+          </div>
+      </div>
+    </div>
+</div>
+    <!-- section 2 End here -->
+{% schema %}
+  {
+    "name": "Introduction",
+    "settings": [
+{
+  "type": "textarea",
+  "id": "intro",
+  "label": "introduction text"
+},
+{
+  "type": "textarea",
+  "id": "moretext",
+  "label": "introduction cont."
+},
+{
+  "type": "image_picker",
+  "id": "icon",
+  "label": "icon image"
+}
+
+
+],
+	"presets": [
+      {
+        "name": "Introduction",
+        "category": "homepage"
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
